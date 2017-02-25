@@ -4,7 +4,7 @@ A dispatcher in a similar vein to [Redux](https://github.com/reactjs/redux).
 
 ## Why?
 
-To go hand in hand with [Reaction](https://github.com/djalbat/Reaction). It does away with Redux's concept of a centralised state, instead passing information directly to listeners. However, it does this is by applying rules to actions and combining the results in pretty much the same way that Redux employs reducers.
+To go hand in hand with [Reaction](https://github.com/djalbat/Reaction). It does away with Redux's concept of a centralised state, instead passing information directly to listeners. It does this is by applying rules to actions and combining the results in pretty much the same way that Redux employs reducers.
 
 ## Rewiring Redux
 
