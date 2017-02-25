@@ -4,7 +4,7 @@ A dispatcher in a similar vein to Redux.
 
 ## Why?
 
-I'll get back to you on that.
+To go hand in hand with [Reaction](https://github.com/djalbat/Reaction). It does away with Redux's concept of a centralised state, instead passing objects directly to listeners. It does however construct these objects by combining rule in an identical fashion to Redux's use of reducers.
 
 ## Rewiring Redux
 
@@ -12,7 +12,7 @@ Coming soon...
 
 #### Errata
 
-- None.
+- None as yet.
 
 ## Installation
 
