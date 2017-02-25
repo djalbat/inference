@@ -1,6 +1,6 @@
 # Inference
 
-A dispatcher in a similar vein to Redux.
+A dispatcher in a similar vein to [Redux](https://github.com/reactjs/redux).
 
 ## Why?
 
