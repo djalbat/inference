@@ -33,12 +33,13 @@ class FilterLink extends Component {
 
       <Link active={active}
             onClick={() => {
-              const type = SET_VISIBILITY_FILTER;
+              const type = SET_VISIBILITY_FILTER,
+                    action = {
+                      type: type,
+                      filter: filter
+                    };
 
-              store.dispatch({
-                type: type,
-                filter: filter
-              });
+              store.dispatch(action);
             }}
       >
         {children}

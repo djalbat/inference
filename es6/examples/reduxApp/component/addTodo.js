@@ -7,12 +7,11 @@ const constants = require('../constants');
 
 const ADD_TODO = constants.ADD_TODO;
 
-let id = 0;
+let id = 0,
+    inputDOMElement;
 
 const AddTodo = (props, context) => {
   const { store } = context;
-
-  let inputDOMElement;
 
   return (
 
@@ -23,13 +22,14 @@ const AddTodo = (props, context) => {
       />
       <button onClick={() => {
                 const type = ADD_TODO,
-                      text = inputDOMElement.value;  ///
+                      text = inputDOMElement.value,  ///
+                      action = {
+                        type: type,
+                        text: text,
+                        id: id++  ///
+                      };
 
-                store.dispatch({
-                  type: type,
-                  text: text,
-                  id: id++  ///
-                });
+                store.dispatch(action);
 
                 inputDOMElement.value = '';
               }}

@@ -33,12 +33,13 @@ class VisibleTodoList extends Component {
 
         <TodoList todos={visibleTodos}
                   onTodoClick={(id) => {
-                    const type = TOGGLE_TODO;
+                    const type = TOGGLE_TODO,
+                          action = {
+                            type: type,
+                            id: id
+                          };
 
-                    store.dispatch({
-                      type: type,
-                      id: id
-                    });
+                    store.dispatch(action);
                   }}
         />
 
