@@ -9,8 +9,12 @@ const createDispatcher = (rule) => {
     listeners.forEach((listener) => listener(result));
   };
 
-  const subscribe = (key, listener) => {
+  const subscribe = (listener) => {
     listeners.push(listener);
+
+    return () => {
+      unsubscribe(listener);
+    };
   };
 
   const unsubscribe = (l) => {
