@@ -1,43 +1,20 @@
 'use strict';
 
 const createDispatcher = (rule) => {
-  let listenersMap = {};
+  let listeners = [];
 
   const dispatch = (action) => {
-    const resultsMap = rule(action),
-          keys = Object.keys(resultsMap);
+    const result = rule(action);
 
-    keys.forEach((key) => {
-      const listeners = listenersMap[key];
-
-      if (listeners) {
-        const result = resultsMap[key];
-
-        listeners.forEach((listener) => listener(result));
-      }
-    });
+    listeners.forEach((listener) => listener(result));
   };
 
   const subscribe = (key, listener) => {
-    const listeners = listenersMap[key] || [];
-
     listeners.push(listener);
-
-    listenersMap[key] = listeners;
   };
 
-  const unsubscribe = (key, l) => {
-    let listeners = listenersMap[key] || [];
-
-    listeners = listeners.filter((listener) => {
-      return (listener !== l);
-    });
-
-    if (listeners) {
-      listenersMap[key] = listeners;
-    } else {
-      delete listenersMap[key];
-    }
+  const unsubscribe = (l) => {
+    listeners = listeners.filter((listener) => { return (listener !== l); });
   };
 
   return { dispatch, subscribe, unsubscribe };
