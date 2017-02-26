@@ -28,9 +28,7 @@ const createStore = (reducer) => {
     });
   };
 
-  dispatch({
-    type: undefined ///
-  });
+  dispatch();
 
   return { getState, dispatch, subscribe, unsubscribe };
 };

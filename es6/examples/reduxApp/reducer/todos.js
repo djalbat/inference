@@ -5,8 +5,10 @@ const constants = require('../constants');
 const ADD_TODO = constants.ADD_TODO,
       TOGGLE_TODO = constants.TOGGLE_TODO;
 
-const todos = (state = [], action) => {
-  switch (action.type) {
+const todos = (state = [], action = {}) => {
+  const { type } = action;
+
+  switch (type) {
     case ADD_TODO:
       const todo = newTodo(action);
 
