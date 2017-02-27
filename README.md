@@ -32,7 +32,7 @@ You will need to do this if you want to look at the examples.
 
 ## Examples
 
-You will be able to launch the `examples.html` file in the project's root directory.
+Launch the `examples.html` file in the project's root directory. There is one Inference example application as well as a Redux application, for comparison.
 
 ## Usage
 
