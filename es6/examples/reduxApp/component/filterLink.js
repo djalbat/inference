@@ -4,8 +4,7 @@ const reaction = require('reaction'),
       { React } = reaction,
       { Component } = React;
 
-const Link = require('./link'),
-      constants = require('../constants');
+const constants = require('../constants');
 
 const SET_VISIBILITY_FILTER = constants.SET_VISIBILITY_FILTER;
 
@@ -29,23 +28,34 @@ class FilterLink extends Component {
           { children, filter } = this.props,
           active = (filter === visibilityFilter);
 
+    if (active) {
+      return (
+
+        <span>{children}</span>
+
+      );
+    }
+
     return (
 
-      <Link active={active}
-            clickHandler={() => {
-              const type = SET_VISIBILITY_FILTER,
-                    visibilityFilter = filter,
-                    action = {
-                      type: type,
-                      visibilityFilter: visibilityFilter
-                    };
+      <a href='#'
+         className="filter"
+         onClick={(event) => {
 
-              store.dispatch(action);
-            }}
+           event.preventDefault();
+
+           const type = SET_VISIBILITY_FILTER,
+                 visibilityFilter = filter,
+                 action = {
+                   type: type,
+                   visibilityFilter: visibilityFilter
+                 };
+
+           store.dispatch(action);
+         }}
       >
         {children}
-      </Link>
-
+      </a>
     );
   }
 }

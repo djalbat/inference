@@ -1,70 +1,46 @@
 'use strict';
 
 const reaction = require('reaction'),
-      { React } = reaction,
-      { Component } = React;
+      { React } = reaction;
 
-const Link = require('./link'),
-      constants = require('../constants'),
+const constants = require('../constants'),
       dispatcher = require('../dispatcher');
 
-const SHOW_ALL = constants.SHOW_ALL,
-      SET_VISIBILITY_FILTER = constants.SET_VISIBILITY_FILTER;
+const SET_VISIBILITY_FILTER = constants.SET_VISIBILITY_FILTER;
 
-class FilterLink extends Component {
-  getInitialState() {
-    const visibilityFilter = SHOW_ALL,
-          initialState = {
-            visibilityFilter: visibilityFilter
-          };
+const FilterLink = (props) => {
+  const { children, filter } = props,
+        className = `${filter} filter`,
+        firstChild = first(children),
+        text = firstChild.getText();
 
-    return initialState;
-  }
+  return (
 
-  componentDidMount() {
-    this.unsubscribe = dispatcher.subscribe((update) => {
-      const { setVisibilityFilter } = update;
+      <div className={className}>
+        <a href='#'
+           onClick={(event) => {
 
-      if (setVisibilityFilter) {
-        const { visibilityFilter } = update;
+             event.preventDefault();
 
-        this.state = Object.assign(this.state, {
-          visibilityFilter: visibilityFilter
-        });
+             const type = SET_VISIBILITY_FILTER,
+                   visibilityFilter = filter,
+                   action = {
+                     type: type,
+                     visibilityFilter: visibilityFilter
+                   };
 
-        this.forceUpdate()
-      }
-    });
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
-
-  render() {
-    const { visibilityFilter } = this.state,
-          { children, filter } = this.props,
-          active = (filter === visibilityFilter);
-
-    return (
-
-      <Link active={active}
-            clickHandler={() => {
-              const type = SET_VISIBILITY_FILTER,
-                    visibilityFilter = filter,
-                    action = {
-                      type: type,
-                      visibilityFilter: visibilityFilter
-                    };
-
-              dispatcher.dispatch(action);
-            }}
-      >
-        {children}
-      </Link>
-
-    );
-  }
-}
+             dispatcher.dispatch(action);
+           }}
+        >
+          {text}
+        </a>
+        <span>
+          {text}
+        </span>
+      </div>
+  );
+};
 
 module.exports = FilterLink;
+
+const first = array => array[0];

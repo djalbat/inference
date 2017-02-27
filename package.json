@@ -1,7 +1,7 @@
 {
   "name": "inference",
   "author": "James Smith",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "license": "MIT",
   "homepage": "https://github.com/djalbat/Inference",
   "description": "A dispatcher in a similar vein to Redux.",
@@ -20,7 +20,7 @@
     "chokidar-cli": "^1.2.0",
     "concurrently": "^3.3.0",
     "node-sass": "^4.5.0",
-    "reaction": "^1.6.39",
+    "reaction": "^1.7.0",
     "redux": "^3.4.0"
   },
   "scripts": {

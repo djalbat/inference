@@ -8,31 +8,26 @@ const ADD_TODO = constants.ADD_TODO,
 const todos = (state = [], action = {}) => {
   const { type } = action;
 
+  let todos = state;
+
   switch (type) {
     case ADD_TODO :
-      const todo = newTodo(action);
-
-      state = [
-        ...state,
-        todo
-      ];
+      todos = addTodoToTodos(todos, action);
       break;
 
     case TOGGLE_TODO :
-      state = state.map((todo) => {
-        todo = toggleTodo(todo, action);
-
-        return todo;
-      });
+      todos = toggleTodos(todos, action);
       break;
   }
+
+  state = todos;
 
   return state;
 };
 
 module.exports = todos;
 
-const newTodo = (action) => {
+const addTodoToTodos = (todos, action) => {
   const { id, text } = action,
         completed = false,
         todo = {
@@ -41,19 +36,28 @@ const newTodo = (action) => {
           completed: completed
         };
 
-  return todo;
+  todos = [
+    ...todos,
+    todo
+  ];
+
+  return todos;
 };
 
-const toggleTodo = (todo, action) => {
+const toggleTodos = (todos, action) => {
   const { id } = action;
 
-  if (todo.id === id) {
-    let { completed } = todo;
+  todos = todos.map((todo) => {
+    if (todo.id === id) {
+      let { completed } = todo;
 
-    completed = !completed;
+      completed = !completed;
 
-    todo.completed = completed;
-  }
+      todo.completed = completed;
+    }
 
-  return todo;
+    return todo;
+  });
+
+  return todos;
 };

@@ -1,5 +1,31 @@
-a:disabled {
-  color: black;
-  text-underline: none; }
+div.app div.filter {
+  display: inline-block; }
+
+div.app.SHOW_ALL div.filter.SHOW_ALL a {
+  display: none; }
+
+div.app.SHOW_ALL div.filter.SHOW_ACTIVE span {
+  display: none; }
+
+div.app.SHOW_ALL div.filter.SHOW_COMPLETED span {
+  display: none; }
+
+div.app.SHOW_ACTIVE div.filter.SHOW_ALL span {
+  display: none; }
+
+div.app.SHOW_ACTIVE div.filter.SHOW_ACTIVE a {
+  display: none; }
+
+div.app.SHOW_ACTIVE div.filter.SHOW_COMPLETED span {
+  display: none; }
+
+div.app.SHOW_COMPLETED div.filter.SHOW_ALL span {
+  display: none; }
+
+div.app.SHOW_COMPLETED div.filter.SHOW_ACTIVE span {
+  display: none; }
+
+div.app.SHOW_COMPLETED div.filter.SHOW_COMPLETED a {
+  display: none; }
 
 /*# sourceMappingURL=inferenceApp.css.map */

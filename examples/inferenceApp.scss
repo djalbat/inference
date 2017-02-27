@@ -1,4 +1,29 @@
-a:disabled {
-  color: black;
-  text-underline: none;
+div.app {
+  div.filter {
+    display: inline-block;
+  }
+
+  &.SHOW_ALL {
+    div.filter {
+      &.SHOW_ALL { a { display: none; } }
+      &.SHOW_ACTIVE { span { display: none; } }
+      &.SHOW_COMPLETED { span { display: none; } }
+    }
+  }
+
+  &.SHOW_ACTIVE {
+    div.filter {
+      &.SHOW_ALL { span { display: none; } }
+      &.SHOW_ACTIVE { a { display: none; } }
+      &.SHOW_COMPLETED { span { display: none; } }
+    }
+  }
+
+  &.SHOW_COMPLETED {
+    div.filter {
+      &.SHOW_ALL { span { display: none; } }
+      &.SHOW_ACTIVE { span { display: none; } }
+      &.SHOW_COMPLETED { a { display: none; } }
+    }
+  }
 }
