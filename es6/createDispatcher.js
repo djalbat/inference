@@ -4,9 +4,9 @@ const createDispatcher = (rule) => {
   let listeners = [];
 
   const dispatch = (action) => {
-    const result = rule(action);
+    const updates = rule(action);
 
-    listeners.forEach((listener) => listener(result));
+    listeners.forEach((listener) => listener(updates));
   };
 
   const subscribe = (listener) => {
