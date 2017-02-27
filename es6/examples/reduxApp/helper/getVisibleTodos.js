@@ -6,10 +6,10 @@ const SHOW_ALL = constants.SHOW_ALL,
       SHOW_ACTIVE = constants.SHOW_ACTIVE,
       SHOW_COMPLETED = constants.SHOW_COMPLETED;
 
-const getVisibleTodos = (todos, filter) => {
+const getVisibleTodos = (todos, visibilityFilter) => {
   let visibleTodos;
 
-  switch (filter) {
+  switch (visibilityFilter) {
     case SHOW_ALL:
       visibleTodos = todos;
       break;

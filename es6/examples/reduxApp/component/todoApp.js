@@ -8,7 +8,6 @@ const Footer = require('./footer'),
       VisibleTodoList = require('./visibleTodoList');
 
 const TodoApp = () => {
-
   return (
 
     <div>

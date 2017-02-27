@@ -9,7 +9,7 @@ const todos = (state = [], action = {}) => {
   const { type } = action;
 
   switch (type) {
-    case ADD_TODO:
+    case ADD_TODO :
       const todo = newTodo(action);
 
       state = [
@@ -18,7 +18,7 @@ const todos = (state = [], action = {}) => {
       ];
       break;
 
-    case TOGGLE_TODO:
+    case TOGGLE_TODO :
       state = state.map((todo) => {
         todo = toggleTodo(todo, action);
 

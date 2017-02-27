@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "inferenceApp.css",
+	"sources": [
+		"inferenceApp.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,CAAC,AAAA,SAAS,CAAC;EACT,KAAK,EAAE,KAAK;EACZ,cAAc,EAAE,IAAI,GACrB"
+}

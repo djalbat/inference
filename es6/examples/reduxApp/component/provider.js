@@ -6,11 +6,12 @@ const reaction = require('reaction'),
 
 class Provider extends Component {
   getChildContext(context) {
-    const { store } = this.props;
+    const { store } = this.props,
+          childContext = {
+            store: store
+          };
 
-    return ({
-      store: store
-    });
+    return childContext;
   }
 
   render() {

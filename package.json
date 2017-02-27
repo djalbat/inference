@@ -1,7 +1,7 @@
 {
   "name": "inference",
   "author": "James Smith",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "license": "MIT",
   "homepage": "https://github.com/djalbat/Inference",
   "description": "A dispatcher in a similar vein to Redux.",
@@ -20,7 +20,7 @@
     "chokidar-cli": "^1.2.0",
     "concurrently": "^3.3.0",
     "node-sass": "^4.5.0",
-    "reaction": "^1.6.27",
+    "reaction": "^1.6.39",
     "redux": "^3.4.0"
   },
   "scripts": {
@@ -33,11 +33,13 @@
     "build-js-debug": "npm run clean && npm run babel-debug && npm run browserify:examples-debug",
     "watch-js": "npm run build-js && chokidar 'index.js' './examples/index.js' './es6/**/*.js' -c 'npm run build-js'",
     "watch-js-debug": "npm run build-js-debug && chokidar 'index.js' './examples/index.js' './es6/**/*.js' -c 'npm run build-js-debug'",
-    "build-sass": "node-sass --include-path scss scss/reduxApp.scss examples/reduxApp.css",
-    "watch-sass": "npm run build-sass && chokidar './scss/*.scss' -c 'npm run build-sass'",
+    "build-sass": "node-sass ./examples/*.scss -o ./examples",
+    "build-sass-debug": "node-sass --source-map true ./examples/*.scss -o ./examples",
+    "watch-sass": "npm run build-sass && chokidar './examples/*.scss' -c 'npm run build-sass'",
+    "watch-sass-debug": "npm run build-sass-debug && chokidar './examples/*.scss' -c 'npm run build-sass-debug'",
     "build": "concurrently --kill-others 'npm run build-js' 'npm run build-sass'",
-    "build-debug": "concurrently 'npm run build-js-debug' 'npm run build-sass'",
+    "build-debug": "concurrently 'npm run build-js-debug' 'npm run build-sass-debug'",
     "watch": "concurrently 'npm run watch-js' 'npm run watch-sass'",
-    "watch-debug": "concurrently 'npm run watch-js-debug' 'npm run watch-sass'"
+    "watch-debug": "concurrently 'npm run watch-js-debug' 'npm run watch-sass-debug'"
   }
 }

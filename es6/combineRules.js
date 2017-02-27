@@ -1,18 +1,17 @@
 'use strict';
 
-const combineRules = (rulesMap) => {
+const combineRules = (rules) => {
   return (action) => {
-    const keys = Object.keys(rulesMap),
-          updates = keys.reduce((updates, key) => {
-            const rule = rulesMap[key],
-                  update = rule(action);
+    const keys = Object.keys(rules),
+          update = keys.reduce((update, key) => {
+            const rule = rules[key];
 
-            if (update !== undefined) {
-              updates[key] = update;
-            }
+            update[key] = rule(action);
+
+            return update;
           }, {});
 
-    return updates;
+    return update;
   };
 };
 

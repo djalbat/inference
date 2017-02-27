@@ -6,7 +6,7 @@ const reaction = require('reaction'),
 const TodoListItem = require('./todoListItem');
 
 const TodoList = (props) =>  {
-  const { todos, onTodoClick } = props,
+  const { todos, todoClickHandler } = props,
         items = todos.map((todo) => {
           const { id, text, completed } = todo;
 
@@ -14,9 +14,9 @@ const TodoList = (props) =>  {
 
             <TodoListItem text={text}
                           completed={completed}
-                          onClick={() => {
+                          clickHandler={() => {
 
-                              onTodoClick(id);
+                              todoClickHandler(id);
 
                           }}
             />

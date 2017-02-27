@@ -9,10 +9,10 @@ const visibilityFilter = (state = SHOW_ALL, action = {}) => {
   const { type } = action;
 
   switch (type) {
-    case SET_VISIBILITY_FILTER:
-      const { filter } = action;
+    case SET_VISIBILITY_FILTER :
+      const { visibilityFilter } = action;
 
-      state = filter;
+      state = visibilityFilter;
       break;
   }
 

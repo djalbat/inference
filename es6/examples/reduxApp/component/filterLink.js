@@ -32,11 +32,12 @@ class FilterLink extends Component {
     return (
 
       <Link active={active}
-            onClick={() => {
+            clickHandler={() => {
               const type = SET_VISIBILITY_FILTER,
+                    visibilityFilter = filter,
                     action = {
                       type: type,
-                      filter: filter
+                      visibilityFilter: visibilityFilter
                     };
 
               store.dispatch(action);

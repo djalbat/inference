@@ -32,7 +32,7 @@ class VisibleTodoList extends Component {
     return (
 
         <TodoList todos={visibleTodos}
-                  onTodoClick={(id) => {
+                  todoClickHandler={(id) => {
                     const type = TOGGLE_TODO,
                           action = {
                             type: type,

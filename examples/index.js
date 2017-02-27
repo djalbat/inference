@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
-  ReduxApp: require('../lib/examples/reduxApp')
+  reduxApp: require('../lib/examples/reduxApp'),
+  inferenceApp: require('../lib/examples/inferenceApp')
 };
 
