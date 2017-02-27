@@ -3,16 +3,16 @@
 const combineRules = (rulesMap) => {
   return (action) => {
     const keys = Object.keys(rulesMap),
-          resultsMap = keys.reduce((resultsMap, key) => {
+          updates = keys.reduce((updates, key) => {
             const rule = rulesMap[key],
-                  result = rule(action);
+                  update = rule(action);
 
-            if (result !== undefined) {
-              resultsMap[key] = result;
+            if (update !== undefined) {
+              updates[key] = update;
             }
           }, {});
 
-    return resultsMap;
+    return updates;
   };
 };
 
