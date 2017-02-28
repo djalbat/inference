@@ -13,8 +13,7 @@ class TodoList extends Component {
       const { addTodo } = update;
 
       if (addTodo) {
-        const update = addTodo,
-              { text } = update;
+        const { text } = addTodo;
 
         this.addChild(
 

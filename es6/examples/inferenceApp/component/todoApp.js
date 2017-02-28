@@ -18,8 +18,7 @@ class TodoApp extends Component {
       const { setVisibilityFilter } = update;
 
       if (setVisibilityFilter) {
-        const update = setVisibilityFilter,
-              { visibilityFilter } = update,
+        const { visibilityFilter } = setVisibilityFilter,
               className = `${visibilityFilter} app`;
 
         this.setClass(className);
