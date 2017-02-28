@@ -14,12 +14,11 @@ class TodoList extends Component {
 
       if (addTodo) {
         const update = addTodo,
-              { text } = update,
-              completed = false;
+              { text } = update;
 
         this.addChild(
 
-          <TodoListItem text={text} completed={completed} />
+          <TodoListItem text={text} />
 
         );
       }

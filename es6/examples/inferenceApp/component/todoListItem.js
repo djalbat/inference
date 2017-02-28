@@ -6,10 +6,8 @@ const reaction = require('reaction'),
 
 class TodoListItem extends Component {
   render () {
-    const { text, completed } = this.props,
-          className = completed ?
-                        'completed' :
-                          '';
+    const { text } = this.props,
+          className = 'completed';
 
     return (
 
