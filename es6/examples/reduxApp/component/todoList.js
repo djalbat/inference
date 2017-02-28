@@ -1,36 +1,93 @@
 'use strict';
 
 const reaction = require('reaction'),
-      { React } = reaction;
+      { React } = reaction,
+      { Component } = React;
 
-const TodoListItem = require('./todoListItem');
+const constants = require('../constants'),
+      TodoListItem = require('./todoListItem');
 
-const TodoList = (props) =>  {
-  const { todos, todoClickHandler } = props,
-        items = todos.map((todo) => {
-          const { id, text, completed } = todo;
+const SHOW_ALL = constants.SHOW_ALL,
+      SHOW_ACTIVE = constants.SHOW_ACTIVE,
+      SHOW_COMPLETED = constants.SHOW_COMPLETED,
+      TOGGLE_TODO = constants.TOGGLE_TODO;
 
-          return (
+class TodoList extends Component {
+  componentDidMount() {
+    const { store } = this.context;
 
-            <TodoListItem text={text}
-                          completed={completed}
-                          clickHandler={() => {
+    this.unsubscribe = store.subscribe(() => {
+      this.forceUpdate()
+    });
+  }
 
-                              todoClickHandler(id);
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
 
-                          }}
-            />
+  render() {
+    const { store } = this.context,
+          state = store.getState(),
+          { todos, visibilityFilter } = state,
+          visibleTodos = getVisibleTodos(todos, visibilityFilter),
+          items = visibleTodos.map((visibleTodo) => {
+            const { id, text, completed } = visibleTodo;
 
-          );
-        });
+            return (
 
-  return (
+              <TodoListItem text={text}
+                            completed={completed}
+                            clickHandler={() => {
+                              const type = TOGGLE_TODO,
+                                    action = {
+                                      type: type,
+                                      id: id
+                                    };
 
-    <ul>
-      {items}
-    </ul>
+                              store.dispatch(action);
+                            }}
+              />
 
-  );
-};
+            );
+          });
+
+    return (
+
+      <ul>
+        {items}
+      </ul>
+
+    );
+  }
+}
 
 module.exports = TodoList;
+
+const getVisibleTodos = (todos, visibilityFilter) => {
+  let visibleTodos;
+
+  switch (visibilityFilter) {
+    case SHOW_ALL:
+      visibleTodos = todos;
+      break;
+
+    case SHOW_ACTIVE:
+      visibleTodos = todos.filter((todo) => {
+        const { completed } = todo,
+            active = !completed;
+
+        return active;
+      });
+      break;
+
+    case SHOW_COMPLETED:
+      visibleTodos = todos.filter((todo) => {
+        const { completed } = todo;
+
+        return completed;
+      });
+      break;
+  }
+
+  return visibleTodos;
+};

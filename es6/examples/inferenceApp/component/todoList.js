@@ -21,6 +21,8 @@ class TodoList extends Component {
 
         );
       }
+
+      this.forceUpdate();
     });
   }
 

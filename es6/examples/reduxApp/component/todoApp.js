@@ -5,14 +5,14 @@ const reaction = require('reaction'),
 
 const Footer = require('./footer'),
       AddTodo = require('./addTodo'),
-      VisibleTodoList = require('./visibleTodoList');
+      TodoList = require('./todoList');
 
 const TodoApp = () => {
   return (
 
     <div>
       <AddTodo />
-      <VisibleTodoList />
+      <TodoList />
       <Footer />
     </div>
 
