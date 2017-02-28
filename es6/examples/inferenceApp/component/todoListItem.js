@@ -1,26 +1,26 @@
 'use strict';
 
 const reaction = require('reaction'),
-      { React } = reaction;
+      { React } = reaction,
+      { Component } = React;
 
-const TodoListItem = (props) => {
-  const { clickHandler, completed, text } = props,
-        textDecoration = completed ?
-                          'line-through' :
-                            'none',
-        style = {
-          textDecoration: textDecoration
-        };
+class TodoListItem extends Component {
+  render () {
+    const { text, completed } = this.props,
+          className = completed ?
+                        'completed' :
+                          '';
 
-  return (
+    return (
 
-    <li style={style}
-        onClick={clickHandler}
-    >
-      {text}
-    </li>
-  );
-
-};
+      <li className={className}
+          onClick={() => {
+            this.toggleClass('completed');
+          }}>
+        {text}
+      </li>
+    );
+  }
+}
 
 module.exports = TodoListItem;

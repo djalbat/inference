@@ -16,28 +16,28 @@ const FilterLink = (props) => {
 
   return (
 
-      <div className={className}>
-        <a href='#'
-           onClick={(event) => {
+    <div className={className}>
+      <a href='#'
+         onClick={(event) => {
 
-             event.preventDefault();
+           event.preventDefault();
 
-             const type = SET_VISIBILITY_FILTER,
-                   visibilityFilter = filter,
-                   action = {
-                     type: type,
-                     visibilityFilter: visibilityFilter
-                   };
+           const type = SET_VISIBILITY_FILTER,
+                 visibilityFilter = filter,
+                 action = {
+                   type: type,
+                   visibilityFilter: visibilityFilter
+                 };
 
-             dispatcher.dispatch(action);
-           }}
-        >
-          {text}
-        </a>
-        <span>
-          {text}
-        </span>
-      </div>
+           dispatcher.dispatch(action);
+         }}
+      >
+        {text}
+      </a>
+      <span>
+        {text}
+      </span>
+    </div>
   );
 };
 

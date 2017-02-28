@@ -4,21 +4,14 @@ const reaction = require('reaction'),
       { React } = reaction,
       { Component } = React;
 
-const constants = require('../constants'),
-      dispatcher = require('../dispatcher'),
-      TodoListItem = require('./todoListItem'),
-      getVisibleTodos = require('../helper/getVisibleTodos');
-
-const SHOW_ALL = constants.SHOW_ALL,
-      TOGGLE_TODO = constants.TOGGLE_TODO;
+const dispatcher = require('../dispatcher'),
+      TodoListItem = require('./todoListItem');
 
 class TodoList extends Component {
   getInitialState() {
-    const visibilityFilter = SHOW_ALL,
-          todos = [],
+    const todos = [],
           initialState = {
-            todos: todos,
-            visibilityFilter: visibilityFilter
+            todos: todos
           };
 
     return initialState;
@@ -26,7 +19,7 @@ class TodoList extends Component {
 
   componentDidMount() {
     this.unsubscribe = dispatcher.subscribe((update) => {
-      const { addTodo, toggleTodo, setVisibilityFilter } = update;
+      const { addTodo } = update;
 
       if (addTodo) {
         let { todos } = this.state;
@@ -39,31 +32,8 @@ class TodoList extends Component {
           todos: todos
         });
       }
-
-      if (toggleTodo) {
-        let { todos } = this.state;
-
-        update = toggleTodo;
-
-        todos = toggleTodos(todos, update);
-
-        this.state = Object.assign(this.state, {
-          todos: todos
-        });
-      }
-
-      if (setVisibilityFilter) {
-        update = setVisibilityFilter;
-
-        const { visibilityFilter } = update;
-
-        this.state = Object.assign(this.state, {
-          visibilityFilter: visibilityFilter
-        });
-      }
-
-      if (addTodo || toggleTodo || setVisibilityFilter) {
-        this.forceUpdate()
+      if (addTodo) {
+        this.forceUpdate();
       }
     });
   }
@@ -73,24 +43,15 @@ class TodoList extends Component {
   }
 
   render() {
-    const { todos, visibilityFilter } = this.state,
-          visibleTodos = getVisibleTodos(todos, visibilityFilter),
-          items = visibleTodos.map((visibleTodo) => {
-            const { text, completed, id } = visibleTodo,
-                  item =  <TodoListItem text={text}
-                                        completed={completed}
-                                        clickHandler={() => {
-                                          const type = TOGGLE_TODO,
-                                                action = {
-                                                  type: type,
-                                                  id: id
-                                                };
+    const { todos } = this.state,
+          items = todos.map((todo) => {
+            const { text, completed } = todo;
 
-                                          dispatcher.dispatch(action);
-                                        }}
-                          />;
+            return (
 
-            return item;
+              <TodoListItem text={text} completed={completed} />
+
+            );
           });
 
     return (
@@ -118,24 +79,6 @@ const addTodoToTodos = (todos, update) => {
     ...todos,
     todo
   ];
-
-  return todos;
-};
-
-const toggleTodos = (todos, update) => {
-  const { id } = update;
-
-  todos = todos.map((todo) => {
-    if (todo.id === id) {
-      let { completed } = todo;
-
-      completed = !completed;
-
-      todo.completed = completed;
-    }
-
-    return todo;
-  });
 
   return todos;
 };

@@ -1,31 +1,31 @@
 div.app div.filter {
   display: inline-block; }
 
-div.app.SHOW_ALL div.filter.SHOW_ALL a {
+div.app.showAll div.filter.showAll a {
   display: none; }
 
-div.app.SHOW_ALL div.filter.SHOW_ACTIVE span {
+div.app.showAll div.filter:not(.showAll) span {
   display: none; }
 
-div.app.SHOW_ALL div.filter.SHOW_COMPLETED span {
+div.app.showActive div.filter.showActive a {
   display: none; }
 
-div.app.SHOW_ACTIVE div.filter.SHOW_ALL span {
+div.app.showActive div.filter:not(.showActive) span {
   display: none; }
 
-div.app.SHOW_ACTIVE div.filter.SHOW_ACTIVE a {
+div.app.showActive li.completed {
   display: none; }
 
-div.app.SHOW_ACTIVE div.filter.SHOW_COMPLETED span {
+div.app.showCompleted div.filter.showCompleted a {
   display: none; }
 
-div.app.SHOW_COMPLETED div.filter.SHOW_ALL span {
+div.app.showCompleted div.filter:not(.showCompleted) span {
   display: none; }
 
-div.app.SHOW_COMPLETED div.filter.SHOW_ACTIVE span {
+div.app.showCompleted li:not(.completed) {
   display: none; }
 
-div.app.SHOW_COMPLETED div.filter.SHOW_COMPLETED a {
-  display: none; }
+div.app li.completed {
+  text-decoration: line-through; }
 
 /*# sourceMappingURL=inferenceApp.css.map */
