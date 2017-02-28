@@ -8,8 +8,7 @@ const dispatcher = require('../dispatcher'),
 
 const ADD_TODO = constants.ADD_TODO;
 
-let id = 0,
-    inputDOMElement;
+let inputDOMElement;
 
 const AddTodo = () => {
   return (
@@ -24,8 +23,7 @@ const AddTodo = () => {
                 text = inputDOMElement.value,  ///
                 action = {
                   type: type,
-                  text: text,
-                  id: id++  ///
+                  text: text
                 };
 
           dispatcher.dispatch(action);
@@ -41,4 +39,3 @@ const AddTodo = () => {
 };
 
 module.exports = AddTodo;
-
