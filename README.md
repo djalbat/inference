@@ -14,7 +14,7 @@ There is now a series of complementary videos:
 
 #### Errata
 
-- The check in the Reaction's `forceUpdate()` method for the presence or otherwise of an update has been made explicit.
+- The check in Reaction's `forceUpdate()` method for the presence of an update has been made explicit.
 
 ## Installation
 
