@@ -15,14 +15,7 @@ const SHOW_ALL = constants.SHOW_ALL;
 class TodoApp extends Component {
   componentDidMount() {
     this.unsubscribe = dispatcher.subscribe((update) => {
-      const { setVisibilityFilter } = update;
-
-      if (setVisibilityFilter) {
-        const { visibilityFilter } = setVisibilityFilter,
-              className = `${visibilityFilter} app`;
-
-        this.setClass(className);
-      }
+      this.forceUpdate(update);
     });
   }
 
@@ -30,19 +23,28 @@ class TodoApp extends Component {
     this.unsubscribe();
   }
 
-  render() {
-    const initialVisibilityFilter = SHOW_ALL,
-          className = `${initialVisibilityFilter} app`;
+  render(update = {}) {
+    const { setVisibilityFilter } = update;
 
-    return (
+    if (setVisibilityFilter) {
+      const { visibilityFilter } = setVisibilityFilter,
+            className = `${visibilityFilter} app`;
 
-      <div className={className}>
-        <AddTodo />
-        <TodoList />
-        <Footer />
-      </div>
+      this.setClass(className);
+    } else {
+      const initialVisibilityFilter = SHOW_ALL,
+            className = `${initialVisibilityFilter} app`;
 
-    );
+      return (
+
+        <div className={className}>
+          <AddTodo />
+          <TodoList />
+          <Footer />
+        </div>
+
+      );
+    }
   }
 }
 

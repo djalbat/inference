@@ -10,17 +10,7 @@ const dispatcher = require('../dispatcher'),
 class TodoList extends Component {
   componentDidMount() {
     this.unsubscribe = dispatcher.subscribe((update) => {
-      const { addTodo } = update;
-
-      if (addTodo) {
-        const { text } = addTodo;
-
-        this.addChild(
-
-          <TodoListItem text={text} />
-
-        );
-      }
+      this.forceUpdate(update);
     });
   }
 
@@ -28,13 +18,25 @@ class TodoList extends Component {
     this.unsubscribe();
   }
 
-  render() {
-    return (
+  render(update = {}) {
+    const { addTodo } = update;
 
-      <ul>
-      </ul>
+    if (addTodo) {
+      const { text } = addTodo;
 
-    );
+      this.addChild(
+
+        <TodoListItem text={text} />
+
+      );
+    } else {
+      return (
+
+        <ul>
+        </ul>
+
+      );
+    }
   }
 }
 
