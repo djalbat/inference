@@ -20,8 +20,7 @@
     "chokidar-cli": "^1.2.0",
     "concurrently": "^3.3.0",
     "node-sass": "^4.5.0",
-    "reaction": "^1.11.1",
-    "redux": "^3.4.0"
+    "reaction": "^1.11.1"
   },
   "scripts": {
     "clean": "rm -rf ./lib",
