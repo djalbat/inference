@@ -15,6 +15,7 @@ There is now a series of complementary videos:
 #### Errata
 
 - The check in Reaction's `forceUpdate()` method for the presence of an update has been made explicit.
+- The `spliceChildren()` method of Reaction's `DisplayElement` class has been corrected.
 
 ## Installation
 
