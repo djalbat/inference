@@ -16,6 +16,19 @@ There is now a series of complementary videos:
 
 - The check in Reaction's `forceUpdate()` method for the presence of an update has been made explicit.
 - The `spliceChildren()` method of Reaction's `DisplayElement` class has been corrected.
+- The best way to handle updates in `render()` methods is with the pattern below. Note that there is no default value of an empty object for the `update` argument. This assures that the initial JSX is rendered only once, assuming that the `render()` method is only called once with no update at all. 
+
+```js
+render(update) {
+  if (update) {
+    // handle the update
+  } else {
+    return (
+      // Initial JSX
+    );
+  }
+}
+```
 
 ## Installation
 
