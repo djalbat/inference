@@ -1,12 +1,12 @@
 'use strict';
 
-const reaction = require('reaction'),
-      { React } = reaction,
-      { Component } = React;
+const reaction = require('reaction');
 
 const constants = require('../constants');
 
-const SET_VISIBILITY_FILTER = constants.SET_VISIBILITY_FILTER;
+const { SET_VISIBILITY_FILTER } = constants,
+      { React } = reaction,
+      { Component } = React;
 
 class FilterLink extends Component {
   componentDidMount() {

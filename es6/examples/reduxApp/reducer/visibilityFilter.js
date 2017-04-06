@@ -2,8 +2,7 @@
 
 const constants = require('../constants');
 
-const SHOW_ALL = constants.SHOW_ALL,
-      SET_VISIBILITY_FILTER = constants.SET_VISIBILITY_FILTER;
+const { SHOW_ALL, SET_VISIBILITY_FILTER } = constants;
 
 const visibilityFilter = (state = SHOW_ALL, action = {}) => {
   const { type } = action;

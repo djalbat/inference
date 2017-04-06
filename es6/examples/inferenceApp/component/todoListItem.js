@@ -1,7 +1,8 @@
 'use strict';
 
-const reaction = require('reaction'),
-      { React } = reaction,
+const reaction = require('reaction');
+
+const { React } = reaction,
       { Component } = React;
 
 class TodoListItem extends Component {

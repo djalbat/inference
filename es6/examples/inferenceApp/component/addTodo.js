@@ -1,12 +1,12 @@
 'use strict';
 
-const reaction = require('reaction'),
-      { React } = reaction;
+const reaction = require('reaction');
 
 const dispatcher = require('../dispatcher'),
       constants = require('../constants');
 
-const ADD_TODO = constants.ADD_TODO;
+const { ADD_TODO } = constants,
+      { React } = reaction;
 
 let inputDOMElement;
 

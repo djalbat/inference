@@ -1,12 +1,13 @@
 'use strict';
 
-const reaction = require('reaction'),
-      { React, ReactDOM } = reaction;
+const reaction = require('reaction');
 
 const Redux = require('./reduxApp/redux'),
       reducer = require('./reduxApp/reducer'),
       TodoApp = require('./reduxApp/component/todoApp'),
       Provider = require('./reduxApp/component/provider');
+
+const { React, ReactDOM } = reaction;
 
 const reduxApp = () => {
   const { createStore } = Redux,

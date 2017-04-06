@@ -1,8 +1,6 @@
 'use strict';
 
-const reaction = require('reaction'),
-      { React } = reaction,
-      { Component } = React;
+const reaction = require('reaction');
 
 const Footer = require('./footer'),
       AddTodo = require('./addTodo'),
@@ -10,7 +8,9 @@ const Footer = require('./footer'),
       constants = require('../constants'),
       dispatcher = require('../dispatcher');
 
-const SHOW_ALL = constants.SHOW_ALL;
+const { SHOW_ALL } = constants,
+      { React } = reaction,
+      { Component } = React;
 
 class TodoApp extends Component {
   componentDidMount() {

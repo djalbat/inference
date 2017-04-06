@@ -1,11 +1,12 @@
 'use strict';
 
-const reaction = require('reaction'),
-      { React } = reaction;
+const reaction = require('reaction');
 
 const Footer = require('./footer'),
       AddTodo = require('./addTodo'),
       TodoList = require('./todoList');
+
+const { React } = reaction;
 
 const TodoApp = () => {
   return (

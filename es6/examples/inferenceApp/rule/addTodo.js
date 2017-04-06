@@ -2,7 +2,7 @@
 
 const constants = require('../constants');
 
-const ADD_TODO = constants.ADD_TODO;
+const { ADD_TODO } = constants;
 
 const addTodo = (action = {}) => {
   const { type } = action;

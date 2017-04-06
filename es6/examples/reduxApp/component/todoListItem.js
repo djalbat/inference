@@ -1,7 +1,8 @@
 'use strict';
 
-const reaction = require('reaction'),
-      { React } = reaction;
+const reaction = require('reaction');
+
+const { React } = reaction;
 
 const TodoListItem = (props) => {
   const { clickHandler, completed, text } = props,

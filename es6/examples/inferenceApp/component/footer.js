@@ -1,14 +1,12 @@
 'use strict';
 
-const reaction = require('reaction'),
-      { React } = reaction;
+const reaction = require('reaction');
 
 const FilterLink = require('./filterLink'),
       constants = require('../constants');
 
-const SHOW_ALL = constants.SHOW_ALL,
-      SHOW_ACTIVE = constants.SHOW_ACTIVE,
-      SHOW_COMPLETED = constants.SHOW_COMPLETED;
+const { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } = constants,
+      { React } = reaction;
 
 const Footer = () => {
 

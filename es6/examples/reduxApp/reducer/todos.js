@@ -2,8 +2,7 @@
 
 const constants = require('../constants');
 
-const ADD_TODO = constants.ADD_TODO,
-      TOGGLE_TODO = constants.TOGGLE_TODO;
+const { ADD_TODO, TOGGLE_TODO } = constants;
 
 const todos = (state = [], action = {}) => {
   const { type } = action;

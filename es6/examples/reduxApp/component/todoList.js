@@ -1,16 +1,13 @@
 'use strict';
 
-const reaction = require('reaction'),
-      { React } = reaction,
-      { Component } = React;
+const reaction = require('reaction');
 
 const constants = require('../constants'),
       TodoListItem = require('./todoListItem');
 
-const SHOW_ALL = constants.SHOW_ALL,
-      SHOW_ACTIVE = constants.SHOW_ACTIVE,
-      SHOW_COMPLETED = constants.SHOW_COMPLETED,
-      TOGGLE_TODO = constants.TOGGLE_TODO;
+const { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED, TOGGLE_TODO } = constants,
+      { React } = reaction,
+      { Component } = React;
 
 class TodoList extends Component {
   componentDidMount() {

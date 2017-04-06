@@ -1,12 +1,12 @@
 'use strict';
 
-const reaction = require('reaction'),
-      { React } = reaction;
+const reaction = require('reaction');
 
 const constants = require('../constants'),
       dispatcher = require('../dispatcher');
 
-const SET_VISIBILITY_FILTER = constants.SET_VISIBILITY_FILTER;
+const { SET_VISIBILITY_FILTER } = constants,
+      { React } = reaction;
 
 const FilterLink = (props) => {
   const { children, filter } = props,
