@@ -8,7 +8,7 @@ To go hand in hand with [Reaction](https://github.com/djalbat/Reaction). It does
 
 ## Rewiring Redux
 
-There is now a series of complementary videos:
+There is a series of complementary videos:
 
 **[Rewiring Redux](https://vimeo.com/album/4445954)**
 
