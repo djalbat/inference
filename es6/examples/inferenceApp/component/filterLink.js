@@ -1,17 +1,19 @@
 'use strict';
 
-const reaction = require('reaction');
+const reaction = require('reaction'),
+      necessary = require('necessary');
 
 const constants = require('../constants'),
       dispatcher = require('../dispatcher');
 
-const { SET_VISIBILITY_FILTER } = constants,
-      { React } = reaction;
+const { React } = reaction,
+      { array } = necessary,
+      { SET_VISIBILITY_FILTER } = constants;
 
 const FilterLink = (props) => {
   const { children, filter } = props,
         className = `${filter} filter`,
-        firstChild = first(children),
+        firstChild = array.first(children),
         text = firstChild.getText();
 
   return (
@@ -42,5 +44,3 @@ const FilterLink = (props) => {
 };
 
 module.exports = FilterLink;
-
-const first = array => array[0];
