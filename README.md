@@ -14,6 +14,7 @@ There is a series of complementary videos:
 
 #### Errata
 
+- The `examples.html` file has moved to `examples/index.html`. 
 - The check in Reaction's `forceUpdate()` method for the presence of an update has been made explicit.
 - The `spliceChildren()` method of Reaction's `DisplayElement` class has been corrected.
 - The best way to handle updates in `render()` methods is with the pattern below. Note that there is no default value of an empty object for the `update` argument. This assures that the initial JSX is rendered only once, assuming that the `render()` method is only called once with no update at all. 
@@ -48,7 +49,7 @@ You will need to do this if you want to look at the examples.
 
 ## Examples
 
-Launch the `examples.html` file in the project's root directory. There is one Inference example application as well as a Redux application, for comparison.
+Launch the `examples/index.html` file. There is one Inference example application as well as a Redux application, for comparison.
 
 ## Usage
 
