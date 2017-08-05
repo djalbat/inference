@@ -8,12 +8,13 @@ const constants = require('../constants'),
 
 const { React } = reaction,
       { array } = necessary,
+      { first } = array,
       { SET_VISIBILITY_FILTER } = constants;
 
 const FilterLink = (props) => {
   const { children, filter } = props,
         className = `${filter} filter`,
-        firstChild = array.first(children),
+        firstChild = first(children),
         text = firstChild.getText();
 
   return (
