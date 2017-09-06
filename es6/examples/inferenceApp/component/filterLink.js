@@ -7,8 +7,8 @@ const constants = require('../constants'),
       dispatcher = require('../dispatcher');
 
 const { React } = reaction,
-      { array } = necessary,
-      { first } = array,
+      { arrayUtilities } = necessary,
+      { first } = arrayUtilities,
       { SET_VISIBILITY_FILTER } = constants;
 
 const FilterLink = (props) => {

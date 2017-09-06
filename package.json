@@ -1,7 +1,7 @@
 {
   "name": "inference",
   "author": "James Smith",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "license": "MIT",
   "homepage": "https://github.com/djalbat/Inference",
   "description": "A dispatcher in a similar vein to Redux.",
@@ -9,7 +9,9 @@
     "type": "git",
     "url": "https://github.com/djalbat/Inference"
   },
-  "dependencies": {},
+  "dependencies": {
+    "necessary": "^1.7.5"
+  },
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.7.5",
