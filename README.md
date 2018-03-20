@@ -31,6 +31,8 @@ render(update) {
 }
 ```
 
+- As of version 1.7, Reaction now has a simplified `forceUpdate()` method. The thrust of the point immediately above still holds, but it is worth reading about the changes nonetheless. They can be found at the foot of the Reaction readme file.
+
 ## Installation
 
 With [npm](https://www.npmjs.com/):
