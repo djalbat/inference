@@ -66,11 +66,11 @@ Automation is thanks to [npm scripts](https://docs.npmjs.com/misc/scripts), have
     npm run build-debug
     npm run watch-debug
 
-## Recommended approaches and patterns
+## Recommended patterns and guidelines
 
 Working with Reaction and Inference is like working with React and Redux in many ways, but different in others.
 
-With React and Redux, typically a `forceUpdate()` method is called whenever a listener is invoked. This will appear to cause the component's children to be unmounted, with new children being created by way of the component's `render()` method and then mounted in place of the old ones. It is the `render()` method that typically queries the Redux state and makes use of those parts of it needed to render the children. The usual pattern is as follows:
+With React and Redux, typically a `forceUpdate()` method is called whenever a listener is invoked. This will appear to cause the component's children to be unmounted, with new children being created by way of the component's `render()` method and then mounted in place of the old ones. It is the `render()` method that typically queries the Redux state and makes use of those parts of it needed to render the children. A standard pattern is as follows:
 ```js
 class MyComponent extends Component {
   componentDidMount() {
@@ -97,12 +97,12 @@ class MyComponent extends Component {
 ```
 From this it looks as if the component will be re-rendered every time the listener is invoked. In practice, however, React ensures that, to a large extent, components are only re-rendered when necessary. This "diffing" is done under the hood and appears (at least in the author's experience) to work extremely well.
 
-Reaction, by contrast, has no diffing algorithm. This means that it is not advisable to re-render a component every time a listener is invoked. Instead, components should only change their children in some benign way. To facilitate this, Inference passes updates to listeners when they are invoked and these can then be passed on to `render()` methods. The following pattern is therefore a good place to start:
+Reaction, by contrast, has no diffing algorithm. This means that it is not advisable to re-render a component every time a listener is invoked. Instead, components should only change their children in some benign way on these occasions. To facilitate this, Inference passes updates to listeners when they are invoked and these can then be passed on to `render()` methods directly. The following pattern is therefore a good place to start:
 ```js
 class MyComponent extends Component {
   componentDidMount() {
     this.unsubscribe = dispatcher.subscribe((update) => {
-      this.forceUpdate(update);
+      this.render(update);
     });
   }
 
@@ -114,11 +114,8 @@ class MyComponent extends Component {
     if (update) {
       const { ... } = update;
 
-      // Change the children in some benign way in response to an update.
-
+      // Change the children in some benign way.
     } else {
-      // Return the children for the first time.
-
       return (
 
         ...
@@ -128,9 +125,7 @@ class MyComponent extends Component {
   }
 }
 ```
-A rough rule of thumb is that if *not* passed an update, the `render()` should return the component's children. On the other hand if passed an update, it should not return anything, instead making benign changes such as adding or removing classes. Reaction provides around a dozen methods for these kinds of changes and it is easy to add others as mixins.
-
-Change
+It is important to emphasise that the `render()` method has been called directly here, in preference to the `forceUpdate()` method. This ensures that the component is not remounted and the `render()` method can therefore get away without returning any children. A benign change here means one that has no structural effect on the DOM, such as adding or removing classes. Reaction provides around a dozen methods for these kinds of changes and it is easy to add others as mixins.
 
 ## Contact
 
