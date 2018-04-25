@@ -133,7 +133,7 @@ Whilst the above is a perfectly workable pattern, there are times when more flex
 
 * Sometimes a component needs to filter updates in some way and/or pass updates down to its children.
 
-In order ot address both of these requirements, it is recommended that you create an `updateHandler()` mixin and tailor it to the job at hand. The above pattern therefore becomes the following:
+In order ot address both of these requirements and possibly others, it is recommended that you create an `updateHandler()` mixin and tailor it to the job at hand. The above pattern therefore becomes the following:
 ```js
 class MyComponent extends Component {
   componentDidMount() {
@@ -191,7 +191,25 @@ Note that in this case the `render()` method will be called, and passed the upda
     }
   }
 ```
+* The `updateHandler()` method is also the best place to filter updates before passing them on to the `render()` method:
+```
+function updateHandler(update) {
+  const { showPage } = update;
 
+  if (showPage) {
+    update = showPage;  ///
+
+    this.render(update);
+  }
+}
+```
+Keeping this kind of logic out of the `render()` method keeps it simple. Note also that the `forceUpdate()` could just as easily have been employed here, whatever is needed.
+
+Finally, experience has taught that the `updateHandler()` method is the best place to pass on updates to children. This is worth emphasis:
+
+ * *Never call the `render()`, `forceUpdate()` or indeed `updateHandler()` methods of children from with a component's `render()` method.*
+
+ * *In fact, never call the `render()` or `forceUpdate()` methods of children directly at all. Always call their own `updateHandler()` methods and let these methods implement the logic of deciding whether to call which method, if any.
 
 
 ## Contact
