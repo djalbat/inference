@@ -128,7 +128,7 @@ class MyComponent extends Component {
   }
 }
 ```
-A rough rule of thumb is that if *not* passed an update, the `render()` should return the component's children. On the other hand if passed an update, it should not return anything, instead only changing those children in the aforementioned benign way. Benign changes do not change the DOM in any structural way, for example adding and removing classes. Reaction provides around a dozen methods for these kinds of changes and it is easy to add others as mixins.
+A rough rule of thumb is that if *not* passed an update, the `render()` should return the component's children. On the other hand if passed an update, it should not return anything, instead making benign changes such as adding or removing classes. Reaction provides around a dozen methods for these kinds of changes and it is easy to add others as mixins.
 
 Change
 
