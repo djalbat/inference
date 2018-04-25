@@ -207,7 +207,9 @@ function updateHandler(update) {
 ```
 Keeping this kind of logic out of the `render()` method keeps it simple. Note also that the `forceUpdate()` method could just as easily have been employed here, whatever is needed.
 
-5. Finally, experience has taught that the `updateHandler()` method is the best place to pass on updates to children. This is worth emphasis:
+5. Finally, experience has taught that the `updateHandler()` method is the best place to pass on updates to children.
+
+This is worth emphasis:
 
  * Never call the `render()`, `forceUpdate()` or indeed `updateHandler()` methods of children from with a component's `render()` method.
 
