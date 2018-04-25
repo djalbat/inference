@@ -125,7 +125,7 @@ class MyComponent extends Component {
   }
 }
 ```
-It is important to emphasise that the `render()` method has been called directly here, in preference to the `forceUpdate()` method. This ensures that the component is not remounted and the `render()` method can therefore get away without returning any children. A benign change here means one that has no structural effect on the DOM, such as adding or removing classes. Reaction provides around a dozen methods for these kinds of changes and it is easy to add others as mixins.
+It is important to emphasise that the `render()` method has been called directly from the listener in preference to the `forceUpdate()` method. This ensures that the component is not remounted and that the `render()` method can get away without returning any children. A benign change here means one that has no structural effect on the DOM, such as adding or removing classes. Reaction provides around a dozen methods for these kinds of changes and it is easy to add others as mixins.
 
 ## Contact
 
