@@ -66,7 +66,7 @@ Automation is thanks to [npm scripts](https://docs.npmjs.com/misc/scripts), have
     npm run build-debug
     npm run watch-debug
 
-## Recommended patterns and guidelines
+## Recommended patterns
 
 Working with Reaction and Inference is like working with React and Redux in many ways, but different in others.
 
@@ -126,6 +126,65 @@ class MyComponent extends Component {
 }
 ```
 It is important to emphasise that the `render()` method has been called directly from the listener in preference to the `forceUpdate()` method. This ensures that the component is not remounted and that the `render()` method can get away without returning any children. A benign change here means one that has no structural effect on the DOM, such as adding or removing classes. Reaction provides around a dozen methods for these kinds of changes and it is easy to add others as mixins.
+
+Whilst the above is a perfectly workable pattern, there are times when more flexibility is needed. This is especially true as an application scales. Usually there are two requirements:
+
+* Sometimes a component should be remounted in response to an update rather than just make some benign change to its children.
+
+* Sometimes a component needs to filter updates in some way and/or pass updates down to its children.
+
+In order ot address both of these requirements, it is recommended that you call an `updateHandler()` mixin and tailor its body to the job at hand. The above pattern therefore becomes the following:
+```js
+class MyComponent extends Component {
+  componentDidMount() {
+    this.unsubscribe = dispatcher.subscribe((update) => {
+      this.updateHandler(update);
+    });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
+  render(update) {
+    if (update) {
+      const { ... } = update;
+
+      // Change the children in some benign way.
+    } else {
+      return (
+
+        ...
+
+      );
+    }
+  }
+}
+
+Object.assign(MyComponent, {
+  mixins: [
+    updateHandler
+  ]
+});
+```
+Now several cases can be handled:
+
+* If the component needs only to make benign changes to its children in response to updates:
+```
+function changeHandler(update) {
+  this.render(update);
+}
+```
+
+* If the component needs to be remounted in response to updates:
+```
+function changeHandler(update) {
+  this.forceUpdate(update);
+}
+``
+Note that in this caese the `render()` method will be called, and passed the update, in the process of re-mounting, and must provide the new children.
+
+
 
 ## Contact
 
