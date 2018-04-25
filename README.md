@@ -161,7 +161,7 @@ Note that the simple switch on the presence or otherwise of the `render()` metho
 
 In fact several cases can be handled:
 
-* If the component needs only to make benign changes to its children in response to updates:
+1. If the component needs only to make benign changes to its children in response to updates:
 ```
 function changeHandler(update) {
   this.render(update);
@@ -169,7 +169,7 @@ function changeHandler(update) {
 ```
 This is the same pattern as before, and the aforementioned switch on the presence or otherwise of the `update` argument should be put back into the `render()` method.
 
-* If the component needs to be remounted in response to updates:
+2. If the component needs to be remounted in response to updates:
 ```
 function changeHandler(update) {
   this.forceUpdate(update);
@@ -177,7 +177,7 @@ function changeHandler(update) {
 ```
 Note that in this case the `render()` method will be called, and passed the update, in the process of re-mounting. It should therefore return new children when it receives an update.
 
-* An interesting and not infrequent corner case is not returning any children *unless* an update is received:
+3. An interesting and not infrequent corner case is not returning any children *unless* an update is received:
 ```
 render(update) {
   if (update) {
@@ -193,7 +193,7 @@ render(update) {
 ```
 Here the `render()` method effectively returns `undefined` when the component is first mounted. Both `undefined` and `null` return values are coerced into an empty array, however, so no harm is done.
 
-* The `updateHandler()` method is also the best place to filter updates before passing them on:
+4. The `updateHandler()` method is also the best place to filter updates before passing them on:
 ```
 function updateHandler(update) {
   const { showPage } = update;
@@ -207,7 +207,7 @@ function updateHandler(update) {
 ```
 Keeping this kind of logic out of the `render()` method keeps it simple. Note also that the `forceUpdate()` method could just as easily have been employed here, whatever is needed.
 
-Finally, experience has taught that the `updateHandler()` method is the best place to pass on updates to children. This is worth emphasis:
+5. Finally, experience has taught that the `updateHandler()` method is the best place to pass on updates to children. This is worth emphasis:
 
  * Never call the `render()`, `forceUpdate()` or indeed `updateHandler()` methods of children from with a component's `render()` method.
 
