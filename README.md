@@ -211,6 +211,20 @@ Finally, experience has taught that the `updateHandler()` method is the best pla
 
  * In fact, never call the `render()` or `forceUpdate()` methods of children directly at all. Always call their own `updateHandler()` methods and let these methods decide which method to call, if any.
 
+Suppose, for example, that a parent component has a child form that needs to handle updates. The parent component's `render()` method might look like the following:
+```
+   render(update) {
+     this.form = <Form />;
+
+     return (this.form);
+   }
+```
+Note that since the `render()` method is called only once when the parent component is first mounted, the `update` argument, which is undefined anyway, can be safely ignored. And the component's `updateHandler()` method:
+```
+function updateHandler(update) {
+  this.form.updateHandler(update);
+}
+```
 
 ## Contact
 
