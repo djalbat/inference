@@ -129,11 +129,11 @@ It is important to emphasise that the `render()` method has been called directly
 
 Whilst the above is a perfectly workable pattern, there are times when more flexibility is needed. This is especially true as an application scales. Usually there are two requirements:
 
-* Sometimes a component should be remounted in response to an update rather than just make some benign change to its children.
+* Components need to be remounted in response to updates instead of making benign changes to their children.
 
-* Sometimes a component needs to filter updates in some way and/or pass updates down to its children.
+* Updates need to be filtered in some way and/or passed down from parents to children.
 
-In order ot address both of these requirements and possibly others, it is recommended that you create an `updateHandler()` mixin and tailor it to the job at hand. The above pattern therefore becomes the following:
+In order to address these kinds of requirements , it is recommended that you create an `updateHandler()` method and tailor it to the job at hand. The above pattern therefore becomes the following:
 ```js
 class MyComponent extends Component {
   componentDidMount() {
