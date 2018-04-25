@@ -177,21 +177,23 @@ function changeHandler(update) {
 ```
 Note that in this case the `render()` method will be called, and passed the update, in the process of re-mounting. It should therefore return new children when it receives an update.
 
-* An interesting and not infrequent corner case is not returning any children *unless* an update is received. In this case the `render()` method can take on the following pattern:
+* An interesting and not infrequent corner case is not returning any children *unless* an update is received:
 ```
-  render(update) {
-    if (update) {
-      const { ... } = update;
+render(update) {
+  if (update) {
+    const { ... } = update;
 
-      return (
+    return (
 
-        ...
+      ...
 
-      );
-    }
+    );
   }
+}
 ```
-* The `updateHandler()` method is also the best place to filter updates before passing them on to the `render()` method:
+Here the `render()` method effectively returns `undefined` when the component is first mounted. Both `undefined` and `null` return values are coerced into an empty array, however, so no harm is done.
+
+* The `updateHandler()` method is also the best place to filter updates before passing them on:
 ```
 function updateHandler(update) {
   const { showPage } = update;
@@ -209,15 +211,15 @@ Finally, experience has taught that the `updateHandler()` method is the best pla
 
  * Never call the `render()`, `forceUpdate()` or indeed `updateHandler()` methods of children from with a component's `render()` method.
 
- * In fact, never call the `render()` or `forceUpdate()` methods of children directly at all. Always call their own `updateHandler()` methods and let these methods decide which method to call, if any.
+ * In fact, never call the `render()` or `forceUpdate()` methods of children directly at all. Always call their own `updateHandler()` methods and let these methods decide what to do.
 
 Suppose, for example, that a parent component has a child form that needs to handle updates. The parent component's `render()` method might look like the following:
 ```
-   render(update) {
-     this.form = <Form />;
+render(update) {
+  this.form = <Form />;
 
-     return (this.form);
-   }
+  return (this.form);
+}
 ```
 Note that since the `render()` method is called only once when the parent component is first mounted, the `update` argument, which is undefined anyway, can be safely ignored. And the component's `updateHandler()` method:
 ```
@@ -225,6 +227,7 @@ function updateHandler(update) {
   this.form.updateHandler(update);
 }
 ```
+Note that in passing the update down to the child form component, the parent component remains unchanged.
 
 ## Contact
 
