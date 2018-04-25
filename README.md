@@ -167,7 +167,7 @@ function changeHandler(update) {
   this.render(update);
 }
 ```
-This is the same pattern as before, and the aforementioned switch on the presence or otherwise of the `update` argument should be put back.
+This is the same pattern as before, and the aforementioned switch on the presence or otherwise of the `update` argument should be put back into the `render()` method.
 
 * If the component needs to be remounted in response to updates:
 ```
@@ -175,7 +175,9 @@ function changeHandler(update) {
   this.forceUpdate(update);
 }
 ```
-Note that in this case the `render()` method will be called, and passed the update, in the process of re-mounting. It should therefore provide the new children when it receives an update. An interesting and frequent corner case is not returning any children *unless* an update is received. In this case the render method can be of the following pattern:
+Note that in this case the `render()` method will be called, and passed the update, in the process of re-mounting. It should therefore return new children when it receives an update.
+
+* An interesting and not infrequent corner case is not returning any children *unless* an update is received. In this case the `render()` method can take on the following pattern:
 ```
   render(update) {
     if (update) {
