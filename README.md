@@ -133,7 +133,7 @@ Whilst the above is a perfectly workable pattern, there are times when more flex
 
 * Sometimes a component needs to filter updates in some way and/or pass updates down to its children.
 
-In order ot address both of these requirements, it is recommended that you call an `updateHandler()` mixin and tailor its body to the job at hand. The above pattern therefore becomes the following:
+In order ot address both of these requirements, it is recommended that you create an `updateHandler()` mixin and tailor it to the job at hand. The above pattern therefore becomes the following:
 ```js
 class MyComponent extends Component {
   componentDidMount() {
@@ -147,17 +147,7 @@ class MyComponent extends Component {
   }
 
   render(update) {
-    if (update) {
-      const { ... } = update;
-
-      // Change the children in some benign way.
-    } else {
-      return (
-
-        ...
-
-      );
-    }
+    ...
   }
 }
 
@@ -167,7 +157,7 @@ Object.assign(MyComponent, {
   ]
 });
 ```
-Now several cases can be handled:
+Note that the simple switch on the presence or otherwise of the `render()` method's `update` argument has been removed, although it is perfectly permissible to leave it in. It all depends on the logic that results in the `render()` method being called. And this logic is implemented solely in the `updateHandler()` method. In fact several cases can be handled:
 
 * If the component needs only to make benign changes to its children in response to updates:
 ```
@@ -175,6 +165,7 @@ function changeHandler(update) {
   this.render(update);
 }
 ```
+This is the same pattern as before, and the aforementioned switch on the presence or otherwise of the `update` argument should be put back.
 
 * If the component needs to be remounted in response to updates:
 ```
@@ -182,7 +173,20 @@ function changeHandler(update) {
   this.forceUpdate(update);
 }
 ``
-Note that in this caese the `render()` method will be called, and passed the update, in the process of re-mounting, and must provide the new children.
+Note that in this case the `render()` method will be called, and passed the update, in the process of re-mounting. It should therefore provide the new children when it receives an update. An interesting and frequent corner case is not returning any children *unless* an update is received. In this case the render method can be of the following pattern:
+```
+  render(update) {
+    if (update) {
+      const { ... } = update;
+
+      return (
+
+        ...
+
+      );
+    }
+  }
+```
 
 
 
