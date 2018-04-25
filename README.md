@@ -157,17 +157,17 @@ Object.assign(MyComponent, {
   ]
 });
 ```
-Note that the simple switch on the presence or otherwise of the `render()` method's `update` argument has been removed, although it is perfectly permissible to leave it in. It all depends on the logic that results in the `render()` method being called, logic that should be implemented solely in the body of the `updateHandler()` method.
+Note that the simple switch on the presence or otherwise of the `render()` method's `update` argument has been removed, although it is perfectly permissible to leave it in. It all depends on the logic that results in the `render()` method being called, logic that should be implemented in the `updateHandler()` method.
 
 In fact several cases can be handled:
 
-1. If the component needs only to make benign changes to its children in response to updates:
+1. If the component only needs to make benign changes to its children in response to updates:
 ```
 function changeHandler(update) {
   this.render(update);
 }
 ```
-This is the same pattern as before, and the aforementioned switch on the presence or otherwise of the `update` argument should be put back into the `render()` method.
+This is the same pattern as before, and the aforementioned switch on the presence or otherwise of the `update` argument should probably be put back into the `render()` method.
 
 2. If the component needs to be remounted in response to updates:
 ```
@@ -175,7 +175,7 @@ function changeHandler(update) {
   this.forceUpdate(update);
 }
 ```
-Note that in this case the `render()` method will be called, and passed the update, in the process of re-mounting. It should therefore return new children when it receives an update.
+Note that in this case the `render()` method will be called, and passed the update, during the process of re-mounting. It should therefore return new children when it receives an update.
 
 3. An interesting and not infrequent corner case is not returning any children *unless* an update is received:
 ```
@@ -223,7 +223,7 @@ render(update) {
   return (this.form);
 }
 ```
-Note that since the `render()` method is called only once when the parent component is first mounted, the `update` argument, which is undefined anyway, can be safely ignored. And the component's `updateHandler()` method:
+Since the `render()` method would only be called once, when the parent component is first mounted, the `update` argument, which is undefined anyway, can be safely ignored. And the component's `updateHandler()` method:
 ```
 function updateHandler(update) {
   this.form.updateHandler(update);
