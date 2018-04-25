@@ -157,7 +157,9 @@ Object.assign(MyComponent, {
   ]
 });
 ```
-Note that the simple switch on the presence or otherwise of the `render()` method's `update` argument has been removed, although it is perfectly permissible to leave it in. It all depends on the logic that results in the `render()` method being called. And this logic is implemented solely in the `updateHandler()` method. In fact several cases can be handled:
+Note that the simple switch on the presence or otherwise of the `render()` method's `update` argument has been removed, although it is perfectly permissible to leave it in. It all depends on the logic that results in the `render()` method being called, logic that should be implemented solely in the body of the `updateHandler()` method.
+
+In fact several cases can be handled:
 
 * If the component needs only to make benign changes to its children in response to updates:
 ```
@@ -172,7 +174,7 @@ This is the same pattern as before, and the aforementioned switch on the presenc
 function changeHandler(update) {
   this.forceUpdate(update);
 }
-``
+```
 Note that in this case the `render()` method will be called, and passed the update, in the process of re-mounting. It should therefore provide the new children when it receives an update. An interesting and frequent corner case is not returning any children *unless* an update is received. In this case the render method can be of the following pattern:
 ```
   render(update) {
