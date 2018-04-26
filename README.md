@@ -68,9 +68,7 @@ Automation is thanks to [npm scripts](https://docs.npmjs.com/misc/scripts), have
 
 ## Recommended patterns
 
-Working with Reaction and Inference is like working with React and Redux in many ways, but different in others.
-
-With React and Redux, typically a `forceUpdate()` method is called whenever a listener is invoked. This will appear to cause the component's children to be unmounted, with new children being created by way of the component's `render()` method and then mounted in place of the old ones. It is the `render()` method that typically queries the Redux state and makes use of those parts of it needed to render the children. A standard pattern is as follows:
+With React and Redux, typically a `forceUpdate()` method is called whenever a listener is invoked. This will appear to cause the component's children to be unmounted, with new children being created by way of the component's `render()` method and then mounted in place of the old ones. It is the `render()` method that typically queries the Redux state and makes use of those parts of it needed to render its children. A standard pattern is as follows:
 ```js
 class MyComponent extends Component {
   componentDidMount() {
@@ -97,7 +95,7 @@ class MyComponent extends Component {
 ```
 From this it looks as if the component will be re-rendered every time the listener is invoked. In practice, however, React ensures that, to a large extent, components are only re-rendered when necessary. This "diffing" is done under the hood and appears (at least in the author's experience) to work extremely well.
 
-Reaction, by contrast, has no diffing algorithm. This means that it is not advisable to re-render a component every time a listener is invoked. Instead, components should only change their children in some benign way on these occasions. To facilitate this, Inference passes updates to listeners when they are invoked and these can then be passed on to `render()` methods directly. The following pattern is therefore a good place to start:
+By contrast, Reaction has no diffing algorithm. This means that it is not advisable to re-render a component every time a listener is invoked. Instead, components should only change their children in some benign way on these occasions. To facilitate this, Inference passes updates to listeners when they are invoked and these can then be passed on to `render()` methods directly. A standard patterns is as follows:
 ```js
 class MyComponent extends Component {
   componentDidMount() {
@@ -127,13 +125,15 @@ class MyComponent extends Component {
 ```
 It is important to emphasise that the `render()` method has been called directly from the listener in preference to the `forceUpdate()` method. This ensures that the component is not remounted and that the `render()` method can get away without returning any children. A benign change here means one that has no structural effect on the DOM, such as adding or removing classes. Reaction provides around a dozen methods for these kinds of changes and it is easy to add others as mixins.
 
-Whilst the above is a perfectly workable pattern, there are times when more flexibility is needed. This is especially true as an application scales. Usually there are two requirements:
+Whilst the above is a perfectly workable pattern, there are times when more flexibility is needed. This is especially true as an application scales. Usually there are a few requirements:
 
 * Components need to be remounted in response to updates instead of making benign changes to their children.
 
-* Updates need to be filtered in some way and/or passed down from parents to children.
+* Updates need to be refined in some way before being passed to the `render()` method.
 
-In order to address these kinds of requirements , it is recommended that you create an `updateHandler()` method and tailor it to the job at hand. The above pattern therefore becomes the following:
+* Updates need to be passed down from parents to children.
+
+It is recommended that you create an `updateHandler()` in order to address these kinds of requirements, invoking it in preference to either the `render()` or `forceUpdate()` methods. The above pattern therefore becomes the following:
 ```js
 class MyComponent extends Component {
   componentDidMount() {
@@ -157,7 +157,7 @@ Object.assign(MyComponent, {
   ]
 });
 ```
-Note that the simple switch on the presence or otherwise of the `render()` method's `update` argument has been removed, although it is perfectly permissible to leave it in. It all depends on the logic that results in the `render()` method being called, logic that should be implemented in the `updateHandler()` method.
+Note that the simple switch on the presence or otherwise of the `render()` method's `update` argument has been removed, although there will still be times when it is best to leave it in. It all depends on the logic that results in the `render()` method being called, indirectly or otherwise, logic that should be implemented in the `updateHandler()` method.
 
 In fact several cases can be handled:
 
@@ -193,7 +193,7 @@ render(update) {
 ```
 Here the `render()` method effectively returns `undefined` when the component is first mounted. Both `undefined` and `null` return values are coerced into an empty array, however, so no harm is done.
 
-4. The `updateHandler()` method is also the best place to filter updates before passing them on:
+4. The `updateHandler()` method is also the best place to refine updates before passing them on:
 ```
 function updateHandler(update) {
   const { showPage } = update;
