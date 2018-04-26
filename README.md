@@ -157,9 +157,7 @@ Object.assign(MyComponent, {
   ]
 });
 ```
-Note that the simple switch on the presence or otherwise of the `render()` method's `update` argument has been removed, although there will still be times when it is best to leave it in. It all depends on the logic that results in the `render()` method being called, indirectly or otherwise, logic that should be implemented in the `updateHandler()` method.
-
-In fact several cases can be handled:
+Note that the simple switch on the presence or otherwise of the `render()` method's `update` argument has been removed, although there will still be times when it is best to leave it in. It all depends on the logic that results in the `render()` method being called, indirectly or otherwise, logic that should be implemented in the `updateHandler()` method. In fact several cases can be handled:
 
 1. If the component only needs to make benign changes to its children in response to updates:
 ```
