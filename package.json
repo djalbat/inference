@@ -1,7 +1,7 @@
 {
   "name": "inference",
   "author": "James Smith",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "license": "MIT",
   "homepage": "https://github.com/djalbat/Inference",
   "description": "A dispatcher in a similar vein to Redux.",
