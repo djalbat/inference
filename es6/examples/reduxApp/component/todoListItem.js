@@ -10,7 +10,7 @@ const TodoListItem = (props) => {
                           'line-through' :
                             'none',
         style = {
-          textDecoration: textDecoration
+          textDecoration
         };
 
   return (

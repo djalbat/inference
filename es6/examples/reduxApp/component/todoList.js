@@ -37,8 +37,8 @@ class TodoList extends Component {
                             clickHandler={() => {
                               const type = TOGGLE_TODO,
                                     action = {
-                                      type: type,
-                                      id: id
+                                      type,
+                                      id
                                     };
 
                               store.dispatch(action);

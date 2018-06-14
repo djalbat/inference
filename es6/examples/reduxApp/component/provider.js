@@ -9,7 +9,7 @@ class Provider extends Component {
   getChildContext(context) {
     const { store } = this.props,
           childContext = {
-            store: store
+            store
           };
 
     return childContext;

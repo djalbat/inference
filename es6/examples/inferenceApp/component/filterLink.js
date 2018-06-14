@@ -28,8 +28,8 @@ const FilterLink = (props) => {
            const type = SET_VISIBILITY_FILTER,
                  visibilityFilter = filter,
                  action = {
-                   type: type,
-                   visibilityFilter: visibilityFilter
+                   type,
+                   visibilityFilter
                  };
 
            dispatcher.dispatch(action);

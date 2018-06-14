@@ -22,8 +22,8 @@ const AddTodo = () => {
           const type = ADD_TODO,
                 text = inputDOMElement.value,  ///
                 action = {
-                  type: type,
-                  text: text
+                  type,
+                  text
                 };
 
           dispatcher.dispatch(action);

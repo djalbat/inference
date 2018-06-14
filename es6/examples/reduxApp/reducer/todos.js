@@ -30,9 +30,9 @@ const addTodoToTodos = (todos, action) => {
   const { id, text } = action,
         completed = false,
         todo = {
-          id: id,
-          text: text,
-          completed: completed
+          id,
+          text,
+          completed
         };
 
   todos = [

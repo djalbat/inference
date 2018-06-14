@@ -8,8 +8,8 @@ const todos = require('./reducer/todos'),
 const { combineReducers } = Redux;
 
 const reducer = combineReducers({
-  todos: todos,
-  visibilityFilter: visibilityFilter
+  todos,
+  visibilityFilter
 });
 
 module.exports = reducer;

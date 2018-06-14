@@ -24,10 +24,12 @@ const AddTodo = (props, context) => {
                 const type = ADD_TODO,
                       text = inputDOMElement.value,  ///
                       action = {
-                        type: type,
-                        text: text,
-                        id: id++  ///
+                        type,
+                        text,
+                        id
                       };
+
+                id++;
 
                 store.dispatch(action);
 

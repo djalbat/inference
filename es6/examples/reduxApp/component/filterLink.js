@@ -47,8 +47,8 @@ class FilterLink extends Component {
            const type = SET_VISIBILITY_FILTER,
                  visibilityFilter = filter,
                  action = {
-                   type: type,
-                   visibilityFilter: visibilityFilter
+                   type,
+                   visibilityFilter
                  };
 
            store.dispatch(action);

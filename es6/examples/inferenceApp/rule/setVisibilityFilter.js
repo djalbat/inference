@@ -14,7 +14,7 @@ const setVisibilityFilter = (action = {}) => {
       const { visibilityFilter } = action;
 
       update = {
-        visibilityFilter: visibilityFilter
+        visibilityFilter
       };
       break;
   }

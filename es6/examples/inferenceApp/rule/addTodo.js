@@ -14,7 +14,7 @@ const addTodo = (action = {}) => {
       const { text } = action;
 
       update = {
-        text: text
+        text
       };
       break;
   }
