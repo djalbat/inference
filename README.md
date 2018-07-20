@@ -95,7 +95,7 @@ class MyComponent extends Component {
 ```
 From this it looks as if the component will be re-rendered every time the listener is invoked. In practice, however, React ensures that, to a large extent, components are only re-rendered when necessary. This "diffing" is done under the hood and appears (at least in the author's experience) to work extremely well.
 
-By contrast, Reaction has no diffing algorithm. This means that it is not advisable to re-render a component every time a listener is invoked. Instead, components should only change their children in some benign way on these occasions. To facilitate this, Inference passes updates to listeners when they are invoked and these can then be passed on to `render()` methods directly. A standard patterns is as follows:
+By contrast, Reaction has no diffing algorithm. This means that it is not advisable to re-render a component every time a listener is invoked. Instead, components should only change their children in some benign way on these occasions. To facilitate this, Inference passes updates to listeners when they are invoked and these can then be passed on to `render()` methods directly. A standard pattern is as follows:
 ```js
 class MyComponent extends Component {
   componentDidMount() {
