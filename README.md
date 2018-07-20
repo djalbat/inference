@@ -68,7 +68,7 @@ Automation is thanks to [npm scripts](https://docs.npmjs.com/misc/scripts), have
 
 ## Recommended patterns
 
-With React and Redux, typically a `forceUpdate()` method is called whenever a listener is invoked. This will appear to cause the component's children to be unmounted, with new children being created by way of the component's `render()` method and then mounted in place of the old ones. It is the `render()` method that typically queries the Redux state and makes use of those parts of it needed to render its children. A standard pattern is as follows:
+With React and Redux, typically the `forceUpdate()` method is called whenever a listener is invoked. This will cause the component's children to be unmounted, with new children being created by way of the component's `render()` method and then mounted in place of the old ones. It is the `render()` method that typically queries the Redux state and makes use of those parts of it needed to render its children. A standard pattern is as follows:
 ```js
 class MyComponent extends Component {
   componentDidMount() {
