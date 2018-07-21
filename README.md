@@ -129,7 +129,7 @@ Whilst the above is a perfectly workable pattern, there are times when more flex
 
 * Components need to be remounted in response to updates instead of making benign changes to their children.
 
-* Updates need to be refined in some way before being passed to the `render()` method.
+* Updates need to be filtered in some way before being passed to the `render()` method.
 
 * Updates need to be passed down from parents to children.
 
@@ -191,14 +191,12 @@ render(update) {
 ```
 Here the `render()` method effectively returns `undefined` when the component is first mounted. Both `undefined` and `null` return values are coerced into an empty array, however, so no harm is done.
 
-4. The `updateHandler()` method is also the best place to refine updates before passing them on:
+4. The `updateHandler()` method is also the best place to filter updates before passing them on:
 ```
 function updateHandler(update) {
   const { showPage } = update;
 
   if (showPage) {
-    update = showPage;  ///
-
     this.render(update);
   }
 }
