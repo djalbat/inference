@@ -1,27 +1,35 @@
 'use strict';
 
 const createDispatcher = (rule) => {
-  let listeners = [];
+	let listeners = [];
 
-  const dispatch = (action) => {
-    const update = rule(action);
+	const dispatch = (action) => {
+		const update = rule(action);
 
-    listeners.forEach((listener) => listener(update));
-  };
+		listeners.forEach((listener) => {
+			const { ruleNames } = listener;
 
-  const subscribe = (listener) => {
-    listeners.push(listener);
+			if (!ruleNames.length || ruleNames.some((ruleName) => (update[ruleName] !== undefined))) {
+				listener(update);
+			}
+		});
+	};
 
-    return () => {
-      unsubscribe(listener);
-    };
-  };
+	const subscribe = (listener, ...ruleNames) => {
+		Object.assign(listener, {
+			ruleNames
+		});
 
-  const unsubscribe = (l) => {
-    listeners = listeners.filter((listener) => { return (listener !== l); });
-  };
+		listeners.push(listener);
 
-  return { dispatch, subscribe, unsubscribe };
+		return (() => unsubscribe(listener));
+	};
+
+	const unsubscribe = (l) => {
+		listeners = listeners.filter((listener) => (listener !== l));
+	};
+
+	return { dispatch, subscribe, unsubscribe };
 };
 
 module.exports = createDispatcher;
