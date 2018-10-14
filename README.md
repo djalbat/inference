@@ -41,7 +41,7 @@ With [npm](https://www.npmjs.com/):
 
 You can also clone the repository with [Git](https://git-scm.com/)...
 
-    git clone https://github.com/djalbat/Inference.git
+    git clone https://github.com/djalbat/inference.git
 
 ...then install the necessary modules with npm from within the project's root directory:
 
