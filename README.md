@@ -72,9 +72,7 @@ With React and Redux, typically the `forceUpdate()` method is called whenever a 
 ```js
 class MyComponent extends Component {
   componentDidMount() {
-    this.unsubscribe = store.subscribe(() => {
-      this.forceUpdate();
-    });
+    this.unsubscribe = store.subscribe(() => this.forceUpdate());
   }
 
   componentWillUnmount() {
@@ -99,9 +97,7 @@ By contrast, Reaction has no diffing algorithm. This means that it is not advisa
 ```js
 class MyComponent extends Component {
   componentDidMount() {
-    this.unsubscribe = dispatcher.subscribe((update) => {
-      this.render(update);
-    });
+    this.unsubscribe = dispatcher.subscribe((update) => this.render(update));
   }
 
   componentWillUnmount() {
@@ -137,9 +133,7 @@ It is recommended that you create an `updateHandler()` in order to address these
 ```js
 class MyComponent extends Component {
   componentDidMount() {
-    this.unsubscribe = dispatcher.subscribe((update) => {
-      this.updateHandler(update);
-    });
+    this.unsubscribe = dispatcher.subscribe((update) => this.updateHandler(update));
   }
 
   componentWillUnmount() {
@@ -202,30 +196,6 @@ function updateHandler(update) {
 }
 ```
 Keeping this kind of logic out of the `render()` method keeps it simple. Note also that the `forceUpdate()` method could just as easily have been employed here, whatever is needed.
-
-5. Finally, experience has taught that the `updateHandler()` method is the best place to pass on updates to children.
-
-This is worth emphasis:
-
- * Never call the `render()`, `forceUpdate()` or indeed `updateHandler()` methods of children from with a component's `render()` method.
-
- * In fact, never call the `render()` or `forceUpdate()` methods of children directly at all. Always call their own `updateHandler()` methods and let these methods decide what to do.
-
-Suppose, for example, that a parent component has a child form that needs to handle updates. The parent component's `render()` method might look like the following:
-```
-render(update) {
-  this.form = <Form />;
-
-  return (this.form);
-}
-```
-Since the `render()` method would only be called once, when the parent component is first mounted, the `update` argument, which is undefined anyway, can be safely ignored. And the component's `updateHandler()` method:
-```
-function updateHandler(update) {
-  this.form.updateHandler(update);
-}
-```
-Note that in passing the update down to the child form component, the parent component remains unchanged.
 
 ## Contact
 
