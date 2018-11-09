@@ -6,6 +6,8 @@ A dispatcher in a similar vein to [Redux](https://github.com/reactjs/redux).
 
 To go hand in hand with [Reaction](https://github.com/djalbat/Reaction). It does away with Redux's centralised state, instead passing updates directly to listeners. It does this is by applying rules to actions and combining the results in much the same way that Redux employs reducers.
 
+If you like Reaction and Inference you might like [Reaction with Style](https://github.com/djalbat/reaction-with-style).
+
 ## Rewiring Redux
 
 There is a series of complementary videos:
