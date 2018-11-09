@@ -56,7 +56,7 @@ Launch the `examples/index.html` file. There is one Inference example applicatio
 ## Usage
 
 ```js
-var inference = require('inference');
+const inference = require('inference');
 ```
 
 ## Compiling from source
