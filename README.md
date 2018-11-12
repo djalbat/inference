@@ -217,7 +217,7 @@ function updateHandler(update) {
 
 Keeping this kind of logic out of the `render()` method keeps it simple. Note also that the `forceUpdate()` method could just as easily have been employed here, whatever is needed.
 
-Writing large applications with Inference
+## Writing large applications with Inference
 
 Two things may help you.
 
@@ -233,7 +233,7 @@ componentWillUnmount() {
   this.unsubscribe();
 }
 ```
-Now the `updateHandler()` method will only be invoked if the update has a 'page' or 'error' property and can be written accordingly:
+Now the `updateHandler()` method will only be invoked if an update has a 'page' or 'error' property and can therefore be written accordingly:
 
 ```js
 function updateHandler(update) {
