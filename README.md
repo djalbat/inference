@@ -253,7 +253,7 @@ function updateHandler(update) {
 }
 ```
 Secondly, because of the way mounting works, if you always call the dispatcher's `subscribe()` method from within class components' `componentDidMount()` methods, it is guaranteed that the `updateHandler()` methods of child components will be called before those of their parents.
-This can be extremely useful if parent components need to call mixin methods of their children in order to show or hide them in response to an update, say, and those children's `render()` methods in turn have only returned something in response to the same update.
+This is essential if parent components, in handling a particular update, need to rely on their child components being rendered, and these same child components' `render()` methods only return non-trivially in response to the same update.
 
 ## Contact
 
