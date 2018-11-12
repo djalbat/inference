@@ -129,8 +129,6 @@ Whilst the above is a perfectly workable pattern, there are times when more flex
 
 * Updates need to be filtered in some way before being passed to the `render()` method.
 
-* Updates need to be passed down from parents to children.
-
 It is recommended that you create an `updateHandler()` in order to address these kinds of requirements, invoking it in preference to either the `render()` or `forceUpdate()` methods. The above pattern therefore becomes the following:
 ```js
 class MyComponent extends Component {
@@ -187,7 +185,7 @@ render(update) {
 ```
 Here the `render()` method effectively returns `undefined` when the component is first mounted. Both `undefined` and `null` return values are coerced into an empty array, however, so no harm is done.
 
-4. The `updateHandler()` method is also the best place to filter updates before passing them on:
+4. The `updateHandler()` method is also the best place to filter updates before passing them to the `render()` method:
 ```
 function updateHandler(update) {
   const { showPage } = update;
