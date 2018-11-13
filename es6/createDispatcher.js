@@ -9,7 +9,7 @@ const createDispatcher = (rule) => {
 		listeners.forEach((listener) => {
 			const { ruleNames } = listener;
 
-			if (!ruleNames.length || ruleNames.some((ruleName) => (update[ruleName] !== undefined))) {
+			if ((ruleNames.length === 0) || ruleNames.some((ruleName) => (update[ruleName] !== undefined))) {
 				listener(update);
 			}
 		});

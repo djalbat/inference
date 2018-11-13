@@ -131,7 +131,7 @@ Whilst the above is a perfectly workable pattern, there are times when more flex
 
 * Components need to be remounted in response to updates instead of making benign changes to their children.
 
-* Updates need to be filtered in some way before being passed to the `render()` method.
+* Updates need to be processed in some way before being passed to the `render()` method.
 
 It is recommended that you create an `updateHandler()` in order to address these kinds of requirements, invoking it in preference to either the `render()` or `forceUpdate()` methods. The above pattern therefore becomes the following:
 
@@ -217,11 +217,9 @@ function updateHandler(update) {
 
 Keeping this kind of logic out of the `render()` method keeps it simple. Note also that the `forceUpdate()` method could just as easily have been employed here, whatever is needed.
 
-## Writing large applications with Inference
+## Filtering updates
 
-Two things may help you.
-
-Firstly, the `subscribe()` method can take any number of additional arguments specifying the names of the rules required:
+The `subscribe()` method can take any number of additional arguments specifying the names of the rules required:
 For example:
 
 ```js
@@ -233,7 +231,7 @@ componentWillUnmount() {
   this.unsubscribe();
 }
 ```
-Now the `updateHandler()` method will only be invoked if an update has a 'page' or 'error' property and can therefore be written accordingly:
+Now the `updateHandler()` method will only be invoked if an update has a defined 'page' or 'error' property and can therefore be written accordingly:
 
 ```js
 function updateHandler(update) {
@@ -252,8 +250,6 @@ function updateHandler(update) {
   }
 }
 ```
-Secondly, because of the way mounting works, if you always call the dispatcher's `subscribe()` method from within class components' `componentDidMount()` methods, it is guaranteed that the `updateHandler()` methods of child components will be called before those of their parents.
-This is essential if parent components, in handling a particular update, need to rely on their child components being rendered, and these same child components' `render()` methods only return non-trivially in response to the same update.
 
 ## Contact
 
