@@ -51,15 +51,19 @@ You can also clone the repository with [Git](https://git-scm.com/)...
 
 You will need to do this if you want to look at the examples.
 
-## Examples
-
-Launch the `examples/index.html` file. There is one Inference example application as well as a Redux application, for comparison.
-
 ## Usage
 
 ```js
 const inference = require('inference');
+
+const { combineRules, createDispatcher } = inference;
+
+...
 ```
+
+## Examples
+
+Launch the `examples/index.html` file. There is one Inference example application as well as a Redux application, for comparison.
 
 ## Compiling from source
 
