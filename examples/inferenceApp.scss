@@ -3,25 +3,25 @@ div.app {
     display: inline-block;
   }
 
-  &.showAll {
+  &.show-all {
     div.filter {
-      &.showAll a {
+      &.show-all a {
         display: none;
       }
 
-      &:not(.showAll) span {
+      &:not(.show-all) span {
         display: none;
       }
     }
   }
 
-  &.showActive {
+  &.show-active {
     div.filter {
-      &.showActive a {
+      &.show-active a {
         display: none;
       }
 
-      &:not(.showActive) span {
+      &:not(.show-active) span {
         display: none;
       }
     }
@@ -31,13 +31,13 @@ div.app {
     }
   }
 
-  &.showCompleted {
+  &.show-completed {
     div.filter {
-      &.showCompleted a {
+      &.show-completed a {
         display: none;
       }
 
-      &:not(.showCompleted) span {
+      &:not(.show-completed) span {
         display: none;
       }
     }

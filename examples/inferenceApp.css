@@ -1,28 +1,28 @@
 div.app div.filter {
   display: inline-block; }
 
-div.app.showAll div.filter.showAll a {
+div.app.show-all div.filter.show-all a {
   display: none; }
 
-div.app.showAll div.filter:not(.showAll) span {
+div.app.show-all div.filter:not(.show-all) span {
   display: none; }
 
-div.app.showActive div.filter.showActive a {
+div.app.show-active div.filter.show-active a {
   display: none; }
 
-div.app.showActive div.filter:not(.showActive) span {
+div.app.show-active div.filter:not(.show-active) span {
   display: none; }
 
-div.app.showActive li.completed {
+div.app.show-active li.completed {
   display: none; }
 
-div.app.showCompleted div.filter.showCompleted a {
+div.app.show-completed div.filter.show-completed a {
   display: none; }
 
-div.app.showCompleted div.filter:not(.showCompleted) span {
+div.app.show-completed div.filter:not(.show-completed) span {
   display: none; }
 
-div.app.showCompleted li:not(.completed) {
+div.app.show-completed li:not(.completed) {
   display: none; }
 
 div.app li.completed {

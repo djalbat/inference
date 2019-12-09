@@ -4,7 +4,7 @@ A dispatcher in a similar vein to [Redux](https://github.com/reactjs/redux).
 
 ## Why?
 
-To go hand in hand with [Reaction](https://github.com/djalbat/Reaction). It does away with Redux's centralised state, instead passing updates directly to listeners. It does this is by applying rules to actions and combining the results in much the same way that Redux employs reducers.
+To go hand in hand with [Reaction](https://github.com/djalbat/Reaction). It does away with Redux's centralised state, instead passing updates directly to listeners. It generates updates by applying rules to actions and combining the results in much the same way that Redux employs reducers.
 
 If you like Reaction and Inference you might like [Reaction with Style](https://github.com/djalbat/reaction-with-style).
 
@@ -19,7 +19,7 @@ There is a series of complementary videos:
 - The `examples.html` file has moved to `examples/index.html`. 
 - The check in Reaction's `forceUpdate()` method for the presence of an update has been made explicit.
 - The `spliceChildren()` method of Reaction's `DisplayElement` class has been corrected.
-- The best way to handle updates in `render()` methods is with the pattern below. Note that there is no default value of an empty object for the `update` argument. This assures that the initial JSX is rendered only once, assuming that the `render()` method is only called once with no update at all. 
+- The best way to handle updates in `render()` methods is with the pattern below. Note that there is no default value of an empty object for the `update` argument. This assures that the initial JSX is rendered only once, assuming that the `render()` method is only called once with no update at all.
 
 ```js
 render(update) {
@@ -33,7 +33,9 @@ render(update) {
 }
 ```
 
-- As of version 1.7, Reaction now has a simplified `forceUpdate()` method. The thrust of the point above still holds, but it is worth reading about the changes nonetheless. Details can be found at the foot of the Reaction readme file.
+- As of version 1.7, Reaction now has a simplified `forceUpdate()` method. The thrust of the point above still holds, however, it is worth reading about the changes nonetheless. In particular it is essential to realise that the above pattern only works if `render()` methods are passed to the dispatcher's `subscirbe()` methods in preference to `forceUpdate()` methods. Full details can be found at the foot of the Reaction readme file.
+- Both of the examples now have a child `TodoListItems` class of the `TodoList` class, the latter of which is now a pure function.
+- The `TodoListItems` class in the inference application example now has an `updateHandler()` mixin which follows along the lines recommended patterns and filtering updates sections at the foot of this readme file.
 
 ## Installation
 
@@ -137,7 +139,7 @@ Whilst the above is a perfectly workable pattern, there are times when more flex
 
 * Updates need to be processed in some way before being passed to the `render()` method.
 
-It is recommended that you create an `updateHandler()` in order to address these kinds of requirements, invoking it in preference to either the `render()` or `forceUpdate()` methods. The above pattern therefore becomes the following:
+It is recommended, therefore, that you create an `updateHandler()` mixin in order to address these kinds of requirements, invoking it in preference to either the `render()` or `forceUpdate()` methods. The above pattern then becomes the following:
 
 ```js
 class MyComponent extends Component {

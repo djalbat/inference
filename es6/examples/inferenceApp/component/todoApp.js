@@ -14,23 +14,23 @@ const { SHOW_ALL } = constants,
 
 class TodoApp extends Component {
   componentDidMount() {
-    this.unsubscribe = dispatcher.subscribe((update) => {
-      this.forceUpdate(update);
-    });
+    this.unsubscribe = dispatcher.subscribe((update) => this.render(update));
   }
 
   componentWillUnmount() {
     this.unsubscribe();
   }
 
-  render(update = {}) {
-    const { setVisibilityFilter } = update;
+  render(update) {
+    if (update) {
+      const { setVisibilityFilter } = update;
 
-    if (setVisibilityFilter) {
-      const { visibilityFilter } = setVisibilityFilter,
-            className = `${visibilityFilter} app`;
+      if (setVisibilityFilter) {
+        const { visibilityFilter } = setVisibilityFilter,
+              className = `${visibilityFilter} app`;
 
-      this.setClass(className);
+        this.setClass(className);
+      }
     } else {
       const initialVisibilityFilter = SHOW_ALL,
             className = `${initialVisibilityFilter} app`;

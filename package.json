@@ -1,7 +1,7 @@
 {
   "name": "inference",
   "author": "James Smith",
-  "version": "1.0.50",
+  "version": "1.0.51",
   "license": "MIT, Anti-996",
   "homepage": "https://github.com/djalbat/inference",
   "description": "A dispatcher in a similar vein to Redux.",
@@ -21,7 +21,7 @@
     "concurrently": "^3.3.0",
     "necessary": "^1.4.2",
     "node-sass": "^4.5.0",
-    "reaction": "^2.2.5"
+    "reaction": "^2.2.7"
   },
   "scripts": {
     "clean": "rm -rf ./lib",

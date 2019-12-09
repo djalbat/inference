@@ -14,7 +14,9 @@ class TodoListItem extends Component {
 
       <li className={className}
           onClick={() => {
+
             this.toggleClass('completed');
+
           }}>
         {text}
       </li>

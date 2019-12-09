@@ -8,16 +8,14 @@ const Footer = require('./footer'),
 
 const { React } = reaction;
 
-const TodoApp = () => {
-  return (
+const TodoApp = () =>
 
-    <div>
-      <AddTodo />
-      <TodoList />
-      <Footer />
-    </div>
+  <div>
+    <AddTodo />
+    <TodoList />
+    <Footer />
+  </div>
 
-  );
-};
+;
 
 module.exports = TodoApp;

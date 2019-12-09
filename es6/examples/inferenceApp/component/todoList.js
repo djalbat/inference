@@ -2,43 +2,16 @@
 
 const reaction = require('reaction');
 
-const dispatcher = require('../dispatcher'),
-      TodoListItem = require('./todoListItem');
+const TodoListItems = require('./todoListItems');
 
-const { React } = reaction,
-      { Component } = React;
+const { React } = reaction;
 
-class TodoList extends Component {
-  componentDidMount() {
-    this.unsubscribe = dispatcher.subscribe((update) => {
-      this.forceUpdate(update);
-    });
-  }
+const TodoList = () =>
 
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
+  <ul>
+    <TodoListItems />
+  </ul>
 
-  render(update = {}) {
-    const { addTodo } = update;
-
-    if (addTodo) {
-      const { text } = addTodo;
-
-      this.addChild(
-
-        <TodoListItem text={text} />
-
-      );
-    } else {
-      return (
-
-        <ul>
-        </ul>
-
-      );
-    }
-  }
-}
+;
 
 module.exports = TodoList;
