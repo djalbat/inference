@@ -56,9 +56,9 @@ You will need to do this if you want to look at the examples.
 ## Usage
 
 ```js
-const inference = require('inference');
+const Inference = require('inference');
 
-const { combineRules, createDispatcher } = inference;
+const { combineRules, createDispatcher } = Inference;
 
 ...
 ```
@@ -256,6 +256,8 @@ function updateHandler(update) {
   }
 }
 ```
+
+For a usage example, see the `TodoListItems` component in the Inference application example.
 
 ## Contact
 
