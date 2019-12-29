@@ -1,7 +1,7 @@
 {
   "name": "inference",
   "author": "James Smith",
-  "version": "1.0.53",
+  "version": "1.0.54",
   "license": "MIT, Anti-996",
   "homepage": "https://github.com/djalbat/inference",
   "description": "A dispatcher in a similar vein to Redux.",
@@ -9,7 +9,10 @@
     "type": "git",
     "url": "https://github.com/djalbat/inference"
   },
-  "dependencies": {},
+  "dependencies": {
+    "necessary": "^1.4.2",
+    "reaction": "^2.2.7"
+  },
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.7.5",
@@ -19,9 +22,7 @@
     "browserify": "^13.0.0",
     "chokidar-cli": "^1.2.0",
     "concurrently": "^3.3.0",
-    "necessary": "^1.4.2",
-    "node-sass": "^4.5.0",
-    "reaction": "^2.2.7"
+    "node-sass": "^4.5.0"
   },
   "scripts": {
     "clean": "rm -rf ./lib",
