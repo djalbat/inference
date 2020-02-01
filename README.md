@@ -14,7 +14,7 @@ There is a series of complementary videos:
 
 **[Rewiring Redux](https://vimeo.com/album/4445954)**
 
-#### Errata
+#### Corrigenda
 
 - The `examples.html` file has moved to `examples/index.html`. 
 - The check in Reaction's `forceUpdate()` method for the presence of an update has been made explicit.
