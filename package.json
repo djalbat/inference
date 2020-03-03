@@ -1,7 +1,7 @@
 {
   "name": "inference",
   "author": "James Smith",
-  "version": "1.0.59",
+  "version": "1.0.60",
   "license": "MIT, Anti-996",
   "homepage": "https://github.com/djalbat/inference",
   "description": "A dispatcher in a similar vein to Redux.",
@@ -18,22 +18,29 @@
     "@babel/plugin-transform-react-jsx": "^7.8.3",
     "@babel/preset-env": "^7.8.6",
     "browserify": "^16.5.0",
+    "chokidar-cli": "^2.1.0",
     "concurrently": "^5.1.0",
-    "lively-cli": "^1.0.2",
-    "node-sass": "^4.5.0"
+    "node-sass": "^4.5.0",
+    "watchful-cli": "^1.0.10"
   },
   "scripts": {
     "clean": "rm -rf ./lib",
-    "build-sass": "node-sass ./examples/*.scss -o ./examples",
-    "build-sass-debug": "node-sass --source-map true ./examples/*.scss -o ./examples",
     "watchful": "watchful --source-directory=./es6 --temp-directory=./lib --entry-file=examples.js --bundle-file=./examples.js",
     "batch": "npm run watchful batch --",
     "batch-debug": "npm run watchful batch -- --debug",
     "incremental": "npm run watchful incremental --",
     "incremental-debug": "npm run watchful incremental -- --debug",
-    "build": "npm run clean && npm run batch && npm run clean",
-    "build-debug": "npm run clean && npm run batch-debug && npm run clean",
-    "watch": "npm run clean && npm run batch && concurrently 'npm run incremental' 'npm run lively'",
-    "watch-debug": "npm run clean && npm run batch-debug && concurrently 'npm run incremental-debug' 'npm run lively'"
+    "build-js": "npm run clean && npm run batch",
+    "build-js-debug": "npm run clean && npm run batch-debug",
+    "watch-js": "npm run clean && npm run batch && npm run incremental",
+    "watch-js-debug": "npm run clean && npm run batch-debug && npm run incremental-debug",
+    "build-sass": "node-sass ./examples/*.scss -o ./examples",
+    "build-sass-debug": "node-sass --source-map true ./examples/*.scss -o ./examples",
+    "watch-sass": "npm run build-sass && chokidar './examples/*.scss' -c 'npm run build-sass'",
+    "watch-sass-debug": "npm run build-sass-debug && chokidar './examples/*.scss' -c 'npm run build-sass-debug'",
+    "build": "concurrently --kill-others 'npm run build-js' 'npm run build-sass'",
+    "build-debug": "concurrently 'npm run build-js-debug' 'npm run build-sass-debug'",
+    "watch": "concurrently 'npm run watch-js' 'npm run watch-sass'",
+    "watch-debug": "concurrently 'npm run watch-js-debug' 'npm run watch-sass-debug'"
   }
 }
