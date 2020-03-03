@@ -11,7 +11,9 @@ const inferenceApp = () => {
 
   ReactDOM.render(
 
-    <TodoApp />,
+      <TodoApp />
+
+    ,
     rootDOMElement
 
   );

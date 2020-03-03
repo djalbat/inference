@@ -16,9 +16,11 @@ const reduxApp = () => {
 
   ReactDOM.render(
 
-    <Provider store={store}>
-      <TodoApp />
-    </Provider>,
+      <Provider store={store}>
+        <TodoApp />
+      </Provider>
+
+    ,
     rootDOMElement
 
   );
