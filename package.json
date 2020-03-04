@@ -1,7 +1,7 @@
 {
   "name": "inference",
   "author": "James Smith",
-  "version": "1.0.60",
+  "version": "1.0.61",
   "license": "MIT, Anti-996",
   "homepage": "https://github.com/djalbat/inference",
   "description": "A dispatcher in a similar vein to Redux.",
@@ -39,7 +39,7 @@
     "watch-sass": "npm run build-sass && chokidar './examples/*.scss' -c 'npm run build-sass'",
     "watch-sass-debug": "npm run build-sass-debug && chokidar './examples/*.scss' -c 'npm run build-sass-debug'",
     "build": "concurrently --kill-others 'npm run build-js' 'npm run build-sass'",
-    "build-debug": "concurrently 'npm run build-js-debug' 'npm run build-sass-debug'",
+    "build-debug": "concurrently --kill-others 'npm run build-js-debug' 'npm run build-sass-debug'",
     "watch": "concurrently 'npm run watch-js' 'npm run watch-sass'",
     "watch-debug": "concurrently 'npm run watch-js-debug' 'npm run watch-sass-debug'"
   }
