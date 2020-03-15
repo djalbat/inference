@@ -47,7 +47,7 @@ You can also clone the repository with [Git](https://git-scm.com/)...
 
     git clone https://github.com/djalbat/inference.git
 
-...then install the necessary modules with npm from within the project's root directory:
+...then install the dependencies with npm from within the project's root directory:
 
     npm install
 
