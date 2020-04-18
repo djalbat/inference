@@ -171,7 +171,7 @@ function updateHandler(update) {
 
 Note that the simple switch on the presence or otherwise of the `render()` method's `update` argument has been removed. In fact there should now never be any need to invoke the `render()` method directly. Here are some examples:
 
-1. If the component needs to make benign changes to its children in response to updates, do this in the `updateHandler()` mixin. Experience has taught that this is a cleaner approach because, as already mentioned, it does away with the need for a switch on the presence or otherwise of the `render()` method's 'update` argument.
+1. If the component needs to make benign changes to its children in response to updates, do this in the `updateHandler()` mixin. Experience has taught that this is a cleaner approach because, as already mentioned, it does away with the need for a switch on the presence or otherwise of the `render()` method's `update` argument.
 
 2. If the component needs to be remounted in response to updates, the `forceUpdate()` method can be called directly from within the `updateHandler()` mixin:
 
