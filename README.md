@@ -241,25 +241,7 @@ componentWillUnmount() {
   this.unsubscribe();
 }
 ```
-Now the `updateHandler()` method will only be invoked if an update has a defined 'page' or 'error' property and can therefore be written accordingly:
-
-```js
-function updateHandler(update) {
-  const { page, error } = update;
-
-  if (page) {
-
-    ...
-
-  }
-
-  if (error) {
-
-    ...
-
-  }
-}
-```
+Now the `updateHandler()` method will only be invoked if an update has a defined 'page' or 'error' property and can therefore be written accordingly.
 
 ## Contact
 
