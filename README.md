@@ -217,7 +217,7 @@ function updateHandler(update) {
 
 Again it is worth noting that Keeping this kind of logic out of the `render()` method keeps it simple. Note also that the `update` argument has been refined before passing it on. Whether or not this is done is really just a matter of taste.
 
-## Filtering updates
+## Pre-filtering updates
 
 The `subscribe()` method can take any number of additional arguments specifying the names of the rules required:
 For example:
@@ -250,8 +250,6 @@ function updateHandler(update) {
   }
 }
 ```
-
-For a usage example, see the `TodoListItems` component in the Inference application example.
 
 ## Contact
 
