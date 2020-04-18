@@ -103,7 +103,7 @@ class MyComponent extends Component {
 
 From this it looks as if the component will be re-rendered every time the listener is invoked. In practice, however, React ensures that, to a large extent, components are only re-rendered when necessary. This "diffing" is done under the hood and appears (at least in the author's experience) to work extremely well.
 
-By contrast, Reaction has no diffing algorithm. This means that it is not advisable to re-render a component every time a listener is invoked. Instead, components should only change their children in some benign way on these occasions. To facilitate this, Inference passes updates to listeners when they are invoked and these can then be passed on to `render()` methods directly. A standard pattern is as follows:
+By contrast, Reaction has no diffing algorithm. This means that it is not advisable to re-render a component every time a listener is invoked. Instead, components should typically only change their children in some benign way on these occasions. To facilitate this, Inference passes updates to listeners when they are invoked and these can then be passed on to `render()` methods directly. A standard pattern, albeit a slightly naîve one, is as follows:
 
 ```js
 class MyComponent extends Component {
@@ -169,17 +169,23 @@ function updateHandler(update) {
 }
 ```
 
-Note that the simple switch on the presence or otherwise of the `render()` method's `update` argument has been removed, although there will still be times when it is best to leave it in. It all depends on the logic that results in the `render()` method being called, indirectly or otherwise, logic that should be implemented in the `updateHandler()` method. In fact several cases can be handled:
+Note that the simple switch on the presence or otherwise of the `render()` method's `update` argument has been removed and indeed, there should now never be any need to invoke the `render()` method directly.
 
-1. If the component only needs to make benign changes to its children in response to updates:
+There are now several cases that can be handled cleanly:
+
+1. If the component only needs to make benign changes to its children in response to updates, this is best done in the `updateHandler()` mixin:
 
 ```js
 function updateHandler(update) {
-  this.render(update);
+
+  ...
+
 }
 ```
 
-This is the same pattern as before, and the aforementioned switch on the presence or otherwise of the `update` argument should probably be put back into the `render()` method.
+This is essentially the same pattern as before, however it is worth repreating that benign changes are now made in the `updateHandler()` mixin rather than the `render()` method. Experience has taught that
+
+and the aforementioned switch on the presence or otherwise of the `update` argument should probably be put back into the `render()` method.
 
 2. If the component needs to be remounted in response to updates:
 
