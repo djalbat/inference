@@ -135,7 +135,7 @@ It is important to emphasise that the `render()` method has been called directly
 
 Whilst the above is a perfectly workable pattern, there are times when more flexibility is needed. This is especially true as an application scales. Usually there are a few requirements:
 
-* Components need to be remounted in response to updates instead of making benign changes to their children.
+* Components need to be remounted in response to updates instead of just making benign changes to their children.
 
 * Updates need to be processed in some way before being passed to the `render()` method.
 
@@ -169,25 +169,11 @@ function updateHandler(update) {
 }
 ```
 
-Note that the simple switch on the presence or otherwise of the `render()` method's `update` argument has been removed and indeed, there should now never be any need to invoke the `render()` method directly.
+Note that the simple switch on the presence or otherwise of the `render()` method's `update` argument has been removed. In fact there should now never be any need to invoke the `render()` method directly. Here are some examples:
 
-There are now several cases that can be handled cleanly:
+1. If the component only needs to make benign changes to its children in response to updates, this is best done in the `updateHandler()` mixin. As has already been mentioned, there is no need to invoke the `render()` method on these occasions only for it to make the benign changes that could have been made in the `updateHandler()` mixin itself. Experience has taught that this is a cleaner approach because, again as already mentioned, it does away with any switch on the presence or otherwise of the `render()` method's 'update` argument.
 
-1. If the component only needs to make benign changes to its children in response to updates, this is best done in the `updateHandler()` mixin:
-
-```js
-function updateHandler(update) {
-
-  ...
-
-}
-```
-
-This is essentially the same pattern as before, however it is worth repreating that benign changes are now made in the `updateHandler()` mixin rather than the `render()` method. Experience has taught that
-
-and the aforementioned switch on the presence or otherwise of the `update` argument should probably be put back into the `render()` method.
-
-2. If the component needs to be remounted in response to updates:
+2. If the component needs to be remounted in response to updates, the `forceUpdate()` method can be called directly from within the `updateHandler()` mixin:
 
 ```js
 function updateHandler(update) {
@@ -197,7 +183,7 @@ function updateHandler(update) {
 
 Note that in this case the `render()` method will be called, and passed the update, during the process of re-mounting. It should therefore return new children when it receives an update.
 
-3. An interesting and not infrequent corner case is not returning any children *unless* an update is received:
+3. An interesting and not infrequent corner case is the `render()` method not returning any children *unless* an update is received:
 
 ```js
 render(update) {
@@ -222,12 +208,14 @@ function updateHandler(update) {
   const { page } = update;
 
   if (page) {
-    this.render(update);
+    update = page;  ///
+
+    this.forceUpdate(update);
   }
 }
 ```
 
-Keeping this kind of logic out of the `render()` method keeps it simple. Note also that the `forceUpdate()` method could just as easily have been employed here, whatever is needed.
+Again it is worth noting that Keeping this kind of logic out of the `render()` method keeps it simple. Note also that the `update` argument has been refined before passing it on. Whether or not this is done is really just a matter of taste.
 
 ## Filtering updates
 
