@@ -119,7 +119,7 @@ class MyComponent extends Component {
     if (update) {
       const { ... } = update;
 
-      // Change the children in some benign way.
+      // Make benign changes
     } else {
       return (
 
@@ -171,7 +171,17 @@ function updateHandler(update) {
 
 Note that the simple switch on the presence or otherwise of the `render()` method's `update` argument has been removed. In fact there should now never be any need to invoke the `render()` method directly. Here are some examples:
 
-1. If the component needs to make benign changes to its children in response to updates, do this in the `updateHandler()` mixin. Experience has taught that this is a cleaner approach because, as already mentioned, it does away with the need for a switch on the presence or otherwise of the `render()` method's `update` argument.
+1. If the component needs to make benign changes to its children in response to updates, do this in the `updateHandler()` mixin:
+
+```js
+function updateHandler(update) {
+  const { ... } = update;
+
+  // Make benign changes
+}
+```
+
+Experience has taught that this is a cleaner approach because, as already mentioned, it does away with the need for a switch on the presence or otherwise of the `render()` method's `update` argument.
 
 2. If the component needs to be remounted in response to updates, the `forceUpdate()` method can be called directly from within the `updateHandler()` mixin:
 
@@ -183,7 +193,7 @@ function updateHandler(update) {
 
 Note that in this case the `render()` method will be called, and passed the update, during the process of re-mounting. It should therefore return new children when it receives an update.
 
-3. An interesting and not infrequent corner case is the `render()` method not returning any children *unless* an update is received:
+3. An interesting and not infrequent corner case, and the only time it makes sense to add a switch for the presence or otherwise of the `update` argument, is when the `render()` method does not return any children *unless* an update is received:
 
 ```js
 render(update) {
