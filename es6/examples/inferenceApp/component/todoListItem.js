@@ -16,7 +16,8 @@ export default class TodoListItem extends Component {
 
             this.toggleClass("completed");
 
-          }}>
+          }}
+      >
         {text}
       </li>
     );

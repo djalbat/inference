@@ -21,17 +21,18 @@ const FilterLink = (props) => {
       <a href="#"
          onClick={(event) => {
 
-                   event.preventDefault();
+           event.preventDefault();
 
-                   const type = SET_VISIBILITY_FILTER,
-                         visibilityFilter = filter,
-                         action = {
-                           type,
-                           visibilityFilter
-                         };
+           const type = SET_VISIBILITY_FILTER,
+                 visibilityFilter = filter,
+                 action = {
+                   type,
+                   visibilityFilter
+                 };
 
-                   dispatcher.dispatch(action);
-                 }}
+           dispatcher.dispatch(action);
+
+         }}
       >
         {text}
       </a>

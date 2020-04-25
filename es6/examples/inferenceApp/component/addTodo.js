@@ -14,24 +14,24 @@ const AddTodo = () => {
       <div>
         <input ref={(domElement) => {
 
-                     inputDOMElement = domElement;
+                 inputDOMElement = domElement;
 
-                   }}
+               }}
         />
         <button onClick={() => {
 
-                          const type = ADD_TODO,
-                                text = inputDOMElement.value,  ///
-                                action = {
-                                  type,
-                                  text
-                                };
+                  const type = ADD_TODO,
+                        text = inputDOMElement.value,  ///
+                        action = {
+                          type,
+                          text
+                        };
 
-                          dispatcher.dispatch(action);
+                  dispatcher.dispatch(action);
 
-                          inputDOMElement.value = "";
+                  inputDOMElement.value = "";
 
-                        }}
+                }}
         >
           Add todo
         </button>
