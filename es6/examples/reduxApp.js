@@ -24,4 +24,4 @@ const reduxApp = () => {
   );
 };
 
-module.exports = reduxApp;
+export default reduxApp;

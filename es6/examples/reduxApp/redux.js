@@ -1,6 +1,6 @@
 "use strict";
 
-const createStore = (reducer) => {
+export const createStore = (reducer) => {
   let state,
       listeners = [];
 
@@ -33,7 +33,7 @@ const createStore = (reducer) => {
   return { getState, dispatch, subscribe, unsubscribe };
 };
 
-const combineReducers = (reducers) => {
+export const combineReducers = (reducers) => {
   return (state = {}, action) => {
     const keys = Object.keys(reducers),
           nextState = keys.reduce((nextState, key) => {
@@ -47,7 +47,3 @@ const combineReducers = (reducers) => {
     return nextState;
   };
 };
-
-const Redux = { createStore, combineReducers };
-
-module.exports = Redux;

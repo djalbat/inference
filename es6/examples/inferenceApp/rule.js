@@ -10,4 +10,4 @@ const rule = combineRules({
   setVisibilityFilter
 });
 
-module.exports = rule;
+export default rule;

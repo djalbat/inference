@@ -17,4 +17,4 @@ const inferenceApp = () => {
   );
 };
 
-module.exports = inferenceApp;
+export default inferenceApp;

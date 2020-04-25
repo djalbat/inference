@@ -40,4 +40,4 @@ const AddTodo = () => {
   );
 };
 
-module.exports = AddTodo;
+export default AddTodo;

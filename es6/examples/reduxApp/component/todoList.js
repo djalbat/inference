@@ -12,4 +12,4 @@ const TodoList = () =>
 
 ;
 
-module.exports = TodoList;
+export default TodoList;

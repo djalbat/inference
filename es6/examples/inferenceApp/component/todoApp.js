@@ -11,7 +11,7 @@ import { SHOW_ALL } from "../constants";
 
 const { Component } = React;
 
-class TodoApp extends Component {
+export default class TodoApp extends Component {
   componentDidMount() {
     this.unsubscribe = dispatcher.subscribe((update) => this.render(update));
   }
@@ -46,5 +46,3 @@ class TodoApp extends Component {
     }
   }
 }
-
-module.exports = TodoApp;

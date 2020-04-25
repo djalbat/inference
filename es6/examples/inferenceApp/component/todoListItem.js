@@ -4,7 +4,7 @@ import { React } from "reaction";
 
 const { Component } = React;
 
-class TodoListItem extends Component {
+export default class TodoListItem extends Component {
   render () {
     const { text } = this.props,
           className = "";
@@ -22,5 +22,3 @@ class TodoListItem extends Component {
     );
   }
 }
-
-module.exports = TodoListItem;

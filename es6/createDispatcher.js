@@ -32,4 +32,4 @@ const createDispatcher = (rule) => {
   return { dispatch, subscribe, unsubscribe };
 };
 
-module.exports = createDispatcher;
+export default createDispatcher;

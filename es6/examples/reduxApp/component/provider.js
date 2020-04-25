@@ -4,7 +4,7 @@ import { React } from "reaction";
 
 const { Component } = React;
 
-class Provider extends Component {
+export default class Provider extends Component {
   getChildContext(context) {
     const { store } = this.props,
           childContext = {
@@ -20,5 +20,3 @@ class Provider extends Component {
     return children;
   }
 }
-
-module.exports = Provider;

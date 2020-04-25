@@ -6,13 +6,11 @@ import { SET_VISIBILITY_FILTER } from "../constants";
 
 const { Component } = React;
 
-class FilterLink extends Component {
+export default class FilterLink extends Component {
   componentDidMount() {
     const { store } = this.context;
 
-    this.unsubscribe = store.subscribe(() => {
-      this.forceUpdate()
-    });
+    this.unsubscribe = store.subscribe(() => this.forceUpdate());
   }
 
   componentWillUnmount() {
@@ -58,5 +56,3 @@ class FilterLink extends Component {
     );
   }
 }
-
-module.exports = FilterLink;

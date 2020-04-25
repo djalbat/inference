@@ -10,4 +10,4 @@ const reducer = combineReducers({
   visibilityFilter
 });
 
-module.exports = reducer;
+export default reducer;

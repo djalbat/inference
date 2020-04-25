@@ -20,4 +20,4 @@ const setVisibilityFilter = (action = {}) => {
   return update;
 };
 
-module.exports = setVisibilityFilter;
+export default setVisibilityFilter;

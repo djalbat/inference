@@ -20,4 +20,4 @@ const TodoListItem = (props) => {
 
 };
 
-module.exports = TodoListItem;
+export default TodoListItem;

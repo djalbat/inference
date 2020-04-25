@@ -15,4 +15,4 @@ const combineRules = (rules) => {
   };
 };
 
-module.exports = combineRules;
+export default combineRules;

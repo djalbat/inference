@@ -42,4 +42,4 @@ const FilterLink = (props) => {
   );
 };
 
-module.exports = FilterLink;
+export default FilterLink;

@@ -16,4 +16,4 @@ const visibilityFilter = (state = SHOW_ALL, action = {}) => {
   return state;
 };
 
-module.exports = visibilityFilter;
+export default visibilityFilter;

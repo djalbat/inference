@@ -16,4 +16,4 @@ const TodoApp = () =>
 
 ;
 
-module.exports = TodoApp;
+export default TodoApp;

@@ -22,7 +22,7 @@ const todos = (state = [], action = {}) => {
   return state;
 };
 
-module.exports = todos;
+export default todos;
 
 const addTodoToTodos = (todos, action) => {
   const { id, text } = action,

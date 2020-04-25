@@ -20,4 +20,4 @@ const addTodo = (action = {}) => {
   return update;
 };
 
-module.exports = addTodo;
+export default addTodo;

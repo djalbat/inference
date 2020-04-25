@@ -1,9 +1,4 @@
 "use strict";
 
-const combineRules = require("./combineRules"),
-      createDispatcher = require("./createDispatcher");
-
-module.exports = {
-  combineRules,
-  createDispatcher
-};
+export { default as combineRules } from "./combineRules";
+export { default as createDispatcher } from "./createDispatcher";

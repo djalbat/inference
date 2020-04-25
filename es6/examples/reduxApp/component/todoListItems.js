@@ -8,13 +8,11 @@ import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED, TOGGLE_TODO } from "../constants
 
 const { Component } = React;
 
-class TodoListItems extends Component {
+export default class TodoListItems extends Component {
   componentDidMount() {
     const { store } = this.context;
 
-    this.unsubscribe = store.subscribe(() => {
-      this.forceUpdate();
-    });
+    this.unsubscribe = store.subscribe(() => this.forceUpdate());
   }
 
   componentWillUnmount() {
@@ -52,8 +50,6 @@ class TodoListItems extends Component {
     return items;
   }
 }
-
-module.exports = TodoListItems;
 
 const getVisibleTodos = (todos, visibilityFilter) => {
   let visibleTodos;
