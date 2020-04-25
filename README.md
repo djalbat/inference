@@ -36,6 +36,7 @@ render(update) {
 - As of version 1.7, Reaction now has a simplified `forceUpdate()` method. The thrust of the point above still holds, however, it is worth reading about the changes nonetheless. In particular it is essential to realise that the above pattern only works if `render()` methods are passed to the dispatcher's `subscirbe()` methods in preference to `forceUpdate()` methods. Full details can be found at the foot of the Reaction readme file.
 - Both of the examples now have a child `TodoListItems` components of their respective `TodoList` components. These latter components are now pure functions, in fact.
 - The `TodoListItems` class in the Inference application example now has an `updateHandler()` mixin which follows along the lines recommended patterns and filtering updates sections at the foot of this readme file.
+- More ES6 and some experimental syntax has been adopted, for example ES6 imports and exports.
 
 ## Installation
 
@@ -141,6 +142,10 @@ It is recommended, therefore, that you create an `updateHandler()` mixin in orde
 
 ```
 class MyComponent extends Component {
+  static mixins = [
+    updateHandler
+  ];
+
   componentDidMount() {
     this.unsubscribe = dispatcher.subscribe(this.updateHandler);
   }
@@ -153,12 +158,6 @@ class MyComponent extends Component {
     ...
   }
 }
-
-Object.assign(MyComponent, {
-  mixins: [
-    updateHandler
-  ]
-});
 
 function updateHandler(update) {
 
