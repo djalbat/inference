@@ -1,14 +1,14 @@
-'use strict';
+"use strict";
 
-const reaction = require('reaction');
+const reaction = require("reaction");
 
 const { React } = reaction;
 
 const TodoListItem = (props) => {
   const { clickHandler, completed, text } = props,
         textDecoration = completed ?
-                          'line-through' :
-                            'none',
+                          "line-through" :
+                            "none",
         style = {
           textDecoration
         };

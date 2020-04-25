@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-const createDispatcher = require('../../createDispatcher');
+const createDispatcher = require("../../createDispatcher");
 
-const rule = require('./rule');
+const rule = require("./rule");
 
 const dispatcher = createDispatcher(rule);
 

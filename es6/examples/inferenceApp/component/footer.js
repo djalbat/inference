@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
-const reaction = require('reaction');
+const reaction = require("reaction");
 
-const FilterLink = require('./filterLink'),
-      constants = require('../constants');
+const FilterLink = require("./filterLink"),
+      constants = require("../constants");
 
 const { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } = constants,
       { React } = reaction;
@@ -11,11 +11,11 @@ const { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } = constants,
 const Footer = () =>
 
   <p>
-    {'Show: '}
+    {"Show: "}
     <FilterLink filter={SHOW_ALL}>All</FilterLink>
-    {' - '}
+    {" - "}
     <FilterLink filter={SHOW_ACTIVE}>Active</FilterLink>
-    {' - '}
+    {" - "}
     <FilterLink filter={SHOW_COMPLETED}>Completed</FilterLink>
   </p>
 

@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const constants = require('../constants');
+const constants = require("../constants");
 
 const { ADD_TODO, TOGGLE_TODO } = constants;
 

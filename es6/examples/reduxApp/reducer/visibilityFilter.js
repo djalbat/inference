@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const constants = require('../constants');
+const constants = require("../constants");
 
 const { SHOW_ALL, SET_VISIBILITY_FILTER } = constants;
 

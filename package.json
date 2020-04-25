@@ -10,8 +10,8 @@
     "url": "https://github.com/djalbat/inference"
   },
   "dependencies": {
-    "necessary": "^1.4.2",
-    "reaction": "^2.2.7"
+    "necessary": "^4.1.10",
+    "reaction": "^2.2.24"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
@@ -21,7 +21,7 @@
     "chokidar-cli": "^2.1.0",
     "concurrently": "^5.1.0",
     "node-sass": "^4.5.0",
-    "watchful-cli": "^1.0.10"
+    "watchful-cli": "^1.4.6"
   },
   "scripts": {
     "clean": "rm -rf ./lib",

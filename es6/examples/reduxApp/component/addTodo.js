@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-const reaction = require('reaction');
+const reaction = require("reaction");
 
-const constants = require('../constants');
+const constants = require("../constants");
 
 const { ADD_TODO } = constants,
       { React } = reaction;
@@ -33,7 +33,7 @@ const AddTodo = (props, context) => {
 
                 store.dispatch(action);
 
-                inputDOMElement.value = '';
+                inputDOMElement.value = "";
               }}
       >
         Add todo

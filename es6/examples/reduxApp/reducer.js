@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
-const Redux = require('./redux');
+const Redux = require("./redux");
 
-const todos = require('./reducer/todos'),
-      visibilityFilter = require('./reducer/visibilityFilter');
+const todos = require("./reducer/todos"),
+      visibilityFilter = require("./reducer/visibilityFilter");
 
 const { combineReducers } = Redux;
 

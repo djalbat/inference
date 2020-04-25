@@ -1,12 +1,12 @@
-'use strict';
+"use strict";
 
-const reaction = require('reaction');
+const reaction = require("reaction");
 
-const Footer = require('./footer'),
-      AddTodo = require('./addTodo'),
-      TodoList = require('./todoList'),
-      constants = require('../constants'),
-      dispatcher = require('../dispatcher');
+const Footer = require("./footer"),
+      AddTodo = require("./addTodo"),
+      TodoList = require("./todoList"),
+      constants = require("../constants"),
+      dispatcher = require("../dispatcher");
 
 const { SHOW_ALL } = constants,
       { React } = reaction,

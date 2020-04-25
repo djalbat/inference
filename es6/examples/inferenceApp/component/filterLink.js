@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 
-const reaction = require('reaction'),
-      necessary = require('necessary');
+const reaction = require("reaction"),
+      necessary = require("necessary");
 
-const constants = require('../constants'),
-      dispatcher = require('../dispatcher');
+const constants = require("../constants"),
+      dispatcher = require("../dispatcher");
 
 const { React } = reaction,
       { arrayUtilities } = necessary,
@@ -20,7 +20,7 @@ const FilterLink = (props) => {
   return (
 
     <div className={className}>
-      <a href='#'
+      <a href="#"
          onClick={(event) => {
 
            event.preventDefault();

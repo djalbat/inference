@@ -1,13 +1,13 @@
-'use strict';
+"use strict";
 
-const reaction = require('reaction');
+const reaction = require("reaction");
 
-const TodoApp = require('./inferenceApp/component/todoApp');
+const TodoApp = require("./inferenceApp/component/todoApp");
 
 const { React, ReactDOM } = reaction;
 
 const inferenceApp = () => {
-  const rootDOMElement = document.getElementById('root');
+  const rootDOMElement = document.getElementById("root");
 
   ReactDOM.render(
 

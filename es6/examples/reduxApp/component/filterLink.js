@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-const reaction = require('reaction');
+const reaction = require("reaction");
 
-const constants = require('../constants');
+const constants = require("../constants");
 
 const { SET_VISIBILITY_FILTER } = constants,
       { React } = reaction,
@@ -38,7 +38,7 @@ class FilterLink extends Component {
 
     return (
 
-      <a href='#'
+      <a href="#"
          className="filter"
          onClick={(event) => {
 

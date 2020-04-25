@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
-const reaction = require('reaction');
+const reaction = require("reaction");
 
-const dispatcher = require('../dispatcher'),
-      TodoListItem = require('./todoListItem');
+const dispatcher = require("../dispatcher"),
+      TodoListItem = require("./todoListItem");
 
 const { React } = reaction,
       { Component } = React;

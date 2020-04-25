@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const reaction = require('reaction');
+const reaction = require("reaction");
 
 const { React } = reaction,
       { Component } = React;
@@ -8,14 +8,14 @@ const { React } = reaction,
 class TodoListItem extends Component {
   render () {
     const { text } = this.props,
-          className = '';
+          className = "";
 
     return (
 
       <li className={className}
           onClick={() => {
 
-            this.toggleClass('completed');
+            this.toggleClass("completed");
 
           }}>
         {text}

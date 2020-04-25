@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const reaction = require('reaction');
+const reaction = require("reaction");
 
 const { React } = reaction,
       { Component } = React;
