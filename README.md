@@ -21,7 +21,7 @@ There is a series of complementary videos:
 - The `spliceChildren()` method of Reaction's `DisplayElement` class has been corrected.
 - The best way to handle updates in `render()` methods is with the pattern below. Note that there is no default value of an empty object for the `update` argument. This assures that the initial JSX is rendered only once, assuming that the `render()` method is only called once with no update at all.
 
-```js
+```
 render(update) {
   if (update) {
     // handle the update
@@ -55,10 +55,8 @@ You will need to do this if you want to look at the examples.
 
 ## Usage
 
-```js
-const Inference = require('inference');
-
-const { combineRules, createDispatcher } = Inference;
+```
+import { combineRules, createDispatcher } from "inference";
 
 ...
 ```
@@ -78,7 +76,7 @@ Automation is thanks to [npm scripts](https://docs.npmjs.com/misc/scripts), have
 
 With React and Redux, typically the `forceUpdate()` method is called whenever a listener is invoked. This will cause the component's children to be unmounted, with new children being created by way of the component's `render()` method and then mounted in place of the old ones. It is the `render()` method that typically queries the Redux state and makes use of those parts of it needed to render its children. A standard pattern is as follows:
 
-```js
+```
 class MyComponent extends Component {
   componentDidMount() {
     this.unsubscribe = store.subscribe(() => this.forceUpdate());
@@ -105,7 +103,7 @@ From this it looks as if the component will be re-rendered every time the listen
 
 By contrast, Reaction has no diffing algorithm. This means that it is not advisable to re-render a component every time a listener is invoked. Instead, components should typically only change their children in some benign way on these occasions. To facilitate this, Inference passes updates to listeners when they are invoked and these can then be passed on to `render()` methods directly. A standard pattern, albeit a slightly naîve one, is as follows:
 
-```js
+```
 class MyComponent extends Component {
   componentDidMount() {
     this.unsubscribe = dispatcher.subscribe((update) => this.render(update));
@@ -141,7 +139,7 @@ Whilst the above is a perfectly workable pattern, there are times when more flex
 
 It is recommended, therefore, that you create an `updateHandler()` mixin in order to address these kinds of requirements, invoking it in preference to either the `render()` or `forceUpdate()` methods. The above pattern then becomes the following:
 
-```js
+```
 class MyComponent extends Component {
   componentDidMount() {
     this.unsubscribe = dispatcher.subscribe(this.updateHandler);
@@ -173,7 +171,7 @@ Note that the simple switch on the presence or otherwise of the `render()` metho
 
 1. If the component needs to make benign changes to its children in response to updates, do this in the `updateHandler()` mixin:
 
-```js
+```
 function updateHandler(update) {
   const { ... } = update;
 
@@ -185,7 +183,7 @@ Experience has taught that this is a cleaner approach because, as already mentio
 
 2. If the component needs to be remounted in response to updates, the `forceUpdate()` method can be called directly from within the `updateHandler()` mixin:
 
-```js
+```
 function updateHandler(update) {
   this.forceUpdate(update);
 }
@@ -195,7 +193,7 @@ Note that in this case the `render()` method will be called, and passed the upda
 
 3. An interesting and not infrequent corner case, and the only time it makes sense to add a switch for the presence or otherwise of the `update` argument, is when the `render()` method does not return any children *unless* an update is received:
 
-```js
+```
 render(update) {
   if (update) {
     const { ... } = update;
@@ -213,7 +211,7 @@ Here the `render()` method effectively returns `undefined` when the component is
 
 4. The `updateHandler()` method is also the best place to filter updates before passing them to the `render()` method:
 
-```js
+```
 function updateHandler(update) {
   const { page } = update;
 
@@ -232,16 +230,16 @@ Again it is worth noting that Keeping this kind of logic out of the `render()` m
 The `subscribe()` method can take any number of additional arguments specifying the names of the rules required:
 For example:
 
-```js
+```
 componentDidMount() {
-  this.unsubscribe = dispatcher.subscribe(this.updateHandler, 'page', 'error');
+  this.unsubscribe = dispatcher.subscribe(this.updateHandler, "page", "error");
 }
 
 componentWillUnmount() {
   this.unsubscribe();
 }
 ```
-Now the `updateHandler()` method will only be invoked if an update has a defined 'page' or 'error' property and can therefore be written accordingly.
+Now the `updateHandler()` method will only be invoked if an update has a defined `page` or `error` property and can therefore be written accordingly.
 
 ## Contact
 
