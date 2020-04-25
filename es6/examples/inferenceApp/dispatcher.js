@@ -1,8 +1,8 @@
 "use strict";
 
-const createDispatcher = require("../../createDispatcher");
+import { createDispatcher } from "../../index";
 
-const rule = require("./rule");
+import rule from "./rule";
 
 const dispatcher = createDispatcher(rule);
 

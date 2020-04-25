@@ -1,11 +1,8 @@
 "use strict";
 
-const reaction = require("reaction");
+import { React } from "reaction";
 
-const constants = require("../constants");
-
-const { ADD_TODO } = constants,
-      { React } = reaction;
+import { ADD_TODO } from "../constants";
 
 let id = 0,
     inputDOMElement;
@@ -17,10 +14,13 @@ const AddTodo = (props, context) => {
 
     <div>
       <input ref={(domElement) => {
+
                inputDOMElement = domElement;
+
              }}
       />
       <button onClick={() => {
+
                 const type = ADD_TODO,
                       text = inputDOMElement.value,  ///
                       action = {
@@ -34,6 +34,7 @@ const AddTodo = (props, context) => {
                 store.dispatch(action);
 
                 inputDOMElement.value = "";
+
               }}
       >
         Add todo

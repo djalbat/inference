@@ -1,8 +1,9 @@
 "use strict";
 
-const examples = {
-  reduxApp: require("./examples/reduxApp"),
-  inferenceApp: require("./examples/inferenceApp")
-};
+import reduxApp from "./examples/reduxApp";
+import inferenceApp from "./examples/inferenceApp";
 
-Object.assign(window, examples);
+Object.assign(window, {
+  reduxApp,
+  inferenceApp
+});

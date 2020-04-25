@@ -1,8 +1,6 @@
 "use strict";
 
-const reaction = require("reaction");
-
-const { React } = reaction;
+import { React } from "reaction";
 
 const TodoListItem = (props) => {
   const { clickHandler, completed, text } = props,
@@ -15,9 +13,7 @@ const TodoListItem = (props) => {
 
   return (
 
-    <li style={style}
-        onClick={clickHandler}
-    >
+    <li style={style} onClick={clickHandler}>
       {text}
     </li>
   );

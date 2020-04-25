@@ -1,10 +1,8 @@
 "use strict";
 
-const reaction = require("reaction");
+import { React, ReactDOM } from "reaction";
 
-const TodoApp = require("./inferenceApp/component/todoApp");
-
-const { React, ReactDOM } = reaction;
+import TodoApp from "./inferenceApp/component/todoApp";
 
 const inferenceApp = () => {
   const rootDOMElement = document.getElementById("root");

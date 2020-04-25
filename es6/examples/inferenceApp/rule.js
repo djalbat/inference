@@ -1,9 +1,9 @@
 "use strict";
 
-const combineRules = require("../../combineRules");
+import { combineRules } from "../../index";
 
-const addTodo = require("./rule/addTodo"),
-      setVisibilityFilter = require("./rule/setVisibilityFilter");
+import addTodo from "./rule/addTodo";
+import setVisibilityFilter from "./rule/setVisibilityFilter";
 
 const rule = combineRules({
   addTodo,

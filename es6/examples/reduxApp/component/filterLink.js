@@ -1,12 +1,10 @@
 "use strict";
 
-const reaction = require("reaction");
+import { React } from "reaction";
 
-const constants = require("../constants");
+import { SET_VISIBILITY_FILTER } from "../constants";
 
-const { SET_VISIBILITY_FILTER } = constants,
-      { React } = reaction,
-      { Component } = React;
+const { Component } = React;
 
 class FilterLink extends Component {
   componentDidMount() {
@@ -42,17 +40,18 @@ class FilterLink extends Component {
          className="filter"
          onClick={(event) => {
 
-           event.preventDefault();
+                   event.preventDefault();
 
-           const type = SET_VISIBILITY_FILTER,
-                 visibilityFilter = filter,
-                 action = {
-                   type,
-                   visibilityFilter
-                 };
+                   const type = SET_VISIBILITY_FILTER,
+                         visibilityFilter = filter,
+                         action = {
+                           type,
+                           visibilityFilter
+                         };
 
-           store.dispatch(action);
-         }}
+                   store.dispatch(action);
+
+                 }}
       >
         {children}
       </a>

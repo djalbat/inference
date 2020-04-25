@@ -1,12 +1,10 @@
 "use strict";
 
-const reaction = require("reaction");
+import { React } from "reaction";
 
-const FilterLink = require("./filterLink"),
-      constants = require("../constants");
+import FilterLink from "./filterLink";
 
-const { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } = constants,
-      { React } = reaction;
+import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } from "../constants";
 
 const Footer = () =>
 

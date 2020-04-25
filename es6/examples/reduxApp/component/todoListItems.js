@@ -1,13 +1,12 @@
 "use strict";
 
-const reaction = require("reaction");
+import { React } from "reaction";
 
-const constants = require("../constants"),
-      TodoListItem = require("./todoListItem");
+import TodoListItem from "./todoListItem";
 
-const { React } = reaction,
-      { Component } = React,
-      { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED, TOGGLE_TODO } = constants;
+import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED, TOGGLE_TODO } from "../constants";
+
+const { Component } = React;
 
 class TodoListItems extends Component {
   componentDidMount() {
@@ -35,6 +34,7 @@ class TodoListItems extends Component {
               <TodoListItem text={text}
                             completed={completed}
                             clickHandler={() => {
+
                               const type = TOGGLE_TODO,
                                     action = {
                                       type,
@@ -42,6 +42,7 @@ class TodoListItems extends Component {
                                     };
 
                               store.dispatch(action);
+
                             }}
               />
 

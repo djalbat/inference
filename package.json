@@ -42,5 +42,6 @@
     "build-debug": "concurrently 'npm run build-js-debug' 'npm run build-sass-debug'",
     "watch": "concurrently --kill-others 'npm run watch-js' 'npm run watch-sass'",
     "watch-debug": "concurrently --kill-others 'npm run watch-js-debug' 'npm run watch-sass-debug'"
-  }
+  },
+  "main": "./lib/index.js"
 }

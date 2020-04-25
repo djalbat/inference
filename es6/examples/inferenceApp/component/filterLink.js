@@ -1,15 +1,13 @@
 "use strict";
 
-const reaction = require("reaction"),
-      necessary = require("necessary");
+import { React } from "reaction";
+import { arrayUtilities } from "necessary";
 
-const constants = require("../constants"),
-      dispatcher = require("../dispatcher");
+import dispatcher from "../dispatcher";
 
-const { React } = reaction,
-      { arrayUtilities } = necessary,
-      { first } = arrayUtilities,
-      { SET_VISIBILITY_FILTER } = constants;
+import { SET_VISIBILITY_FILTER } from "../constants";
+
+const { first } = arrayUtilities;
 
 const FilterLink = (props) => {
   const { children, filter } = props,
@@ -23,17 +21,17 @@ const FilterLink = (props) => {
       <a href="#"
          onClick={(event) => {
 
-           event.preventDefault();
+                   event.preventDefault();
 
-           const type = SET_VISIBILITY_FILTER,
-                 visibilityFilter = filter,
-                 action = {
-                   type,
-                   visibilityFilter
-                 };
+                   const type = SET_VISIBILITY_FILTER,
+                         visibilityFilter = filter,
+                         action = {
+                           type,
+                           visibilityFilter
+                         };
 
-           dispatcher.dispatch(action);
-         }}
+                   dispatcher.dispatch(action);
+                 }}
       >
         {text}
       </a>

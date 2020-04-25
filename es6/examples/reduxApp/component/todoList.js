@@ -1,10 +1,8 @@
 "use strict";
 
-const reaction = require("reaction");
+import { React } from "reaction";
 
-const TodoListItems = require("./todoListItems");
-
-const { React } = reaction;
+import TodoListItems from "./todoListItems";
 
 const TodoList = () =>
 

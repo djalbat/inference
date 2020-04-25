@@ -1,17 +1,15 @@
 "use strict";
 
-const reaction = require("reaction");
+import { React, ReactDOM } from "reaction";
 
-const Redux = require("./reduxApp/redux"),
-      reducer = require("./reduxApp/reducer"),
-      TodoApp = require("./reduxApp/component/todoApp"),
-      Provider = require("./reduxApp/component/provider");
+import { createStore } from "./reduxApp/redux";
 
-const { React, ReactDOM } = reaction;
+import reducer from "./reduxApp/reducer";
+import TodoApp from "./reduxApp/component/todoApp";
+import Provider from "./reduxApp/component/provider";
 
 const reduxApp = () => {
-  const { createStore } = Redux,
-        store = createStore(reducer),
+  const store = createStore(reducer),
         rootDOMElement = document.getElementById("root");
 
   ReactDOM.render(

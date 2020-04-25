@@ -1,8 +1,6 @@
 "use strict";
 
-const constants = require("../constants");
-
-const { SET_VISIBILITY_FILTER } = constants;
+import { SET_VISIBILITY_FILTER } from "../constants";
 
 const setVisibilityFilter = (action = {}) => {
   const { type } = action;

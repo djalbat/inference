@@ -1,9 +1,8 @@
 "use strict";
 
-const reaction = require("reaction");
+import { React } from "reaction";
 
-const { React } = reaction,
-      { Component } = React;
+const { Component } = React;
 
 class Provider extends Component {
   getChildContext(context) {

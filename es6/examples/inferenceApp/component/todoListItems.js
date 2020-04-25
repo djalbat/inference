@@ -1,12 +1,11 @@
 "use strict";
 
-const reaction = require("reaction");
+import { React } from "reaction";
 
-const dispatcher = require("../dispatcher"),
-      TodoListItem = require("./todoListItem");
+import dispatcher from "../dispatcher";
+import TodoListItem from "./todoListItem";
 
-const { React } = reaction,
-      { Component } = React;
+const { Component } = React;
 
 class TodoListItems extends Component {
   componentDidMount() {

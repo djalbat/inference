@@ -1,12 +1,10 @@
 "use strict";
 
-const reaction = require("reaction");
+import { React } from "reaction";
 
-const Footer = require("./footer"),
-      AddTodo = require("./addTodo"),
-      TodoList = require("./todoList");
-
-const { React } = reaction;
+import Footer from "./footer";
+import AddTodo from "./addTodo";
+import TodoList from "./todoList";
 
 const TodoApp = () =>
 

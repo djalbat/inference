@@ -1,16 +1,15 @@
 "use strict";
 
-const reaction = require("reaction");
+import { React } from "reaction";
 
-const Footer = require("./footer"),
-      AddTodo = require("./addTodo"),
-      TodoList = require("./todoList"),
-      constants = require("../constants"),
-      dispatcher = require("../dispatcher");
+import Footer from "./footer";
+import AddTodo from "./addTodo";
+import TodoList from "./todoList";
+import dispatcher from "../dispatcher";
 
-const { SHOW_ALL } = constants,
-      { React } = reaction,
-      { Component } = React;
+import { SHOW_ALL } from "../constants";
+
+const { Component } = React;
 
 class TodoApp extends Component {
   componentDidMount() {

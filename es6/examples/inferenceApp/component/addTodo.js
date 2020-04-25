@@ -1,12 +1,10 @@
 "use strict";
 
-const reaction = require("reaction");
+import { React } from "reaction";
 
-const dispatcher = require("../dispatcher"),
-      constants = require("../constants");
+import dispatcher from "../dispatcher";
 
-const { ADD_TODO } = constants,
-      { React } = reaction;
+import { ADD_TODO } from "../constants";
 
 let inputDOMElement;
 
@@ -15,21 +13,25 @@ const AddTodo = () => {
 
       <div>
         <input ref={(domElement) => {
-          inputDOMElement = domElement;
-        }}
+
+                     inputDOMElement = domElement;
+
+                   }}
         />
         <button onClick={() => {
-          const type = ADD_TODO,
-                text = inputDOMElement.value,  ///
-                action = {
-                  type,
-                  text
-                };
 
-          dispatcher.dispatch(action);
+                          const type = ADD_TODO,
+                                text = inputDOMElement.value,  ///
+                                action = {
+                                  type,
+                                  text
+                                };
 
-          inputDOMElement.value = "";
-        }}
+                          dispatcher.dispatch(action);
+
+                          inputDOMElement.value = "";
+
+                        }}
         >
           Add todo
         </button>

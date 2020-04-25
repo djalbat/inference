@@ -1,8 +1,6 @@
 "use strict";
 
-const constants = require("../constants");
-
-const { ADD_TODO } = constants;
+import { ADD_TODO } from "../constants";
 
 const addTodo = (action = {}) => {
   const { type } = action;
