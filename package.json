@@ -1,7 +1,7 @@
 {
   "name": "inference",
   "author": "James Smith",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "license": "MIT, Anti-996",
   "homepage": "https://github.com/djalbat/inference",
   "description": "A dispatcher in a similar vein to Redux.",
@@ -26,7 +26,7 @@
   },
   "scripts": {
     "clean": "rm -rf ./lib",
-    "watchful": "watchful --source-directory=./es6 --temp-directory=./lib --entry-file=examples.js --bundle-file=./examples.js",
+    "watchful": "watchful --source-directory=./es6 --temp-directory=./lib --entry-file=examples.js --bundle-file=./examples.js --pause=100",
     "batch": "npm run watchful batch --",
     "batch-debug": "npm run watchful batch -- --debug",
     "incremental": "npm run watchful incremental --",
