@@ -37,6 +37,7 @@ render(update) {
 - Both of the examples now have a child `TodoListItems` components of their respective `TodoList` components. These latter components are now pure functions, in fact.
 - The `TodoListItems` class in the Inference application example now has an `updateHandler()` mixin which follows along the lines recommended patterns and filtering updates sections at the foot of this readme file.
 - More ES6 and some experimental syntax has been adopted, for example ES6 imports and exports.
+- The `examples/index.html` file is now `examples.html`.
 
 ## Installation
 
@@ -64,7 +65,7 @@ import { combineRules, createDispatcher } from "inference";
 
 ## Examples
 
-Launch the `examples/index.html` file. There is one Inference example application as well as a Redux application, for comparison.
+Launch the `examples.html` file. There is one Inference example application as well as a Redux application, for comparison.
 
 ## Compiling from source
 
