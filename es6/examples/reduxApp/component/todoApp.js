@@ -6,7 +6,7 @@ import Footer from "./footer";
 import AddTodo from "./addTodo";
 import TodoList from "./todoList";
 
-const TodoApp = () =>
+const TodoApp = (props, context) =>
 
   <div>
     <AddTodo />

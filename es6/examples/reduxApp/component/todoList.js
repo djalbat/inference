@@ -4,7 +4,7 @@ import { React } from "reaction";
 
 import TodoListItems from "./todoListItems";
 
-const TodoList = () =>
+const TodoList = (props, context) =>
 
   <ul>
     <TodoListItems />

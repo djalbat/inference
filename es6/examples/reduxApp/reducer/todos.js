@@ -2,7 +2,7 @@
 
 import { ADD_TODO, TOGGLE_TODO } from "../constants";
 
-const todos = (state = [], action = {}) => {
+export default function todos(state = [], action = {}) {
   const { type } = action;
 
   let todos = state;
@@ -20,11 +20,9 @@ const todos = (state = [], action = {}) => {
   state = todos;
 
   return state;
-};
+}
 
-export default todos;
-
-const addTodoToTodos = (todos, action) => {
+function addTodoToTodos(todos, action) {
   const { id, text } = action,
         completed = false,
         todo = {
@@ -39,9 +37,9 @@ const addTodoToTodos = (todos, action) => {
   ];
 
   return todos;
-};
+}
 
-const toggleTodos = (todos, action) => {
+function toggleTodos(todos, action) {
   const { id } = action;
 
   todos = todos.map((todo) => {
@@ -57,4 +55,4 @@ const toggleTodos = (todos, action) => {
   });
 
   return todos;
-};
+}

@@ -2,7 +2,7 @@
 
 import { SHOW_ALL, SET_VISIBILITY_FILTER } from "../constants";
 
-const visibilityFilter = (state = SHOW_ALL, action = {}) => {
+export default function visibilityFilter(state = SHOW_ALL, action = {}) {
   const { type } = action;
 
   switch (type) {
@@ -14,6 +14,4 @@ const visibilityFilter = (state = SHOW_ALL, action = {}) => {
   }
 
   return state;
-};
-
-export default visibilityFilter;
+}

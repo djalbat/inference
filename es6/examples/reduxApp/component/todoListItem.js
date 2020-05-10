@@ -2,7 +2,7 @@
 
 import { React } from "reaction";
 
-const TodoListItem = (props) => {
+const TodoListItem = (props, context) => {
   const { clickHandler, completed, text } = props,
         textDecoration = completed ?
                           "line-through" :
