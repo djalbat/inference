@@ -8,7 +8,7 @@ import reducer from "./reduxApp/reducer";
 import TodoApp from "./reduxApp/component/todoApp";
 import Provider from "./reduxApp/component/provider";
 
-const reduxApp = () => {
+export default function reduxApp() {
   const store = createStore(reducer),
         rootDOMElement = document.getElementById("root");
 
@@ -22,6 +22,4 @@ const reduxApp = () => {
     rootDOMElement
 
   );
-};
-
-export default reduxApp;
+}
