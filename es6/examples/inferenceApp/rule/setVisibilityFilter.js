@@ -2,7 +2,7 @@
 
 import { SET_VISIBILITY_FILTER } from "../constants";
 
-const setVisibilityFilter = (action = {}) => {
+export default function setVisibilityFilter(action = {}) {
   const { type } = action;
 
   let update;
@@ -18,6 +18,4 @@ const setVisibilityFilter = (action = {}) => {
   }
 
   return update;
-};
-
-export default setVisibilityFilter;
+}

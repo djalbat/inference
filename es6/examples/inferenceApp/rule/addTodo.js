@@ -2,7 +2,7 @@
 
 import { ADD_TODO } from "../constants";
 
-const addTodo = (action = {}) => {
+export default function addTodo(action = {}) {
   const { type } = action;
 
   let update;
@@ -18,6 +18,4 @@ const addTodo = (action = {}) => {
   }
 
   return update;
-};
-
-export default addTodo;
+}

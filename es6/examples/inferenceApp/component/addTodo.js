@@ -8,7 +8,7 @@ import { ADD_TODO } from "../constants";
 
 let inputDOMElement;
 
-const AddTodo = () => {
+const AddTodo = (props, context) => {
   return (
 
       <div>

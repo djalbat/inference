@@ -6,7 +6,7 @@ import FilterLink from "./filterLink";
 
 import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } from "../constants";
 
-const Footer = () =>
+const Footer = (props, context) =>
 
   <p>
     {"Show: "}

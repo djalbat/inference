@@ -9,7 +9,7 @@ import { SET_VISIBILITY_FILTER } from "../constants";
 
 const { first } = arrayUtilities;
 
-const FilterLink = (props) => {
+const FilterLink = (props, context) => {
   const { children, filter } = props,
         className = `${filter} filter`,
         firstChild = first(children),
