@@ -38,6 +38,7 @@ render(update) {
 - The `TodoListItems` class in the Inference application example now has an `updateHandler()` mixin which follows along the lines recommended patterns and filtering updates sections at the foot of this readme file.
 - More ES6 and some experimental syntax has been adopted, for example ES6 imports and exports.
 - The `examples/index.html` file is now `examples.html`.
+- The SASS has been removed, only the generated CSS remains.
 
 ## Installation
 
