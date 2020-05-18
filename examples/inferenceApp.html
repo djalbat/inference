@@ -2,7 +2,50 @@
 <html>
   <head>
     <title>Inference Examples - Inference Application</title>
-    <link href="./inferenceApp.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <style>
+
+      div.app div.filter {
+        display: inline-block;
+      }
+
+      div.app.show-all div.filter.show-all a {
+        display: none;
+      }
+
+      div.app.show-all div.filter:not(.show-all) span {
+        display: none;
+      }
+
+      div.app.show-active div.filter.show-active a {
+        display: none;
+      }
+
+      div.app.show-active div.filter:not(.show-active) span {
+        display: none;
+      }
+
+      div.app.show-active li.completed {
+        display: none;
+      }
+
+      div.app.show-completed div.filter.show-completed a {
+        display: none;
+      }
+
+      div.app.show-completed div.filter:not(.show-completed) span {
+        display: none;
+      }
+
+      div.app.show-completed li:not(.completed) {
+        display: none;
+      }
+
+      div.app li.completed {
+        text-decoration: line-through;
+      }
+
+    </style>
   </head>
   <body>
     <div id="root"> </div>
