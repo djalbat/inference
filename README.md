@@ -71,13 +71,6 @@ See the examples for more information.
 
 Launch the `examples.html` file. There is one Inference example application as well as a Redux application, for comparison.
 
-## Compiling from source
-
-Automation is thanks to [npm scripts](https://docs.npmjs.com/misc/scripts), have a look at the `package.json` file. The pertinent commands are:
-
-    npm run build-debug
-    npm run watch-debug
-
 ## Recommended patterns
 
 With React and Redux, typically the `forceUpdate()` method is called whenever a listener is invoked. This will cause the component's children to be unmounted, with new children being created by way of the component's `render()` method and then mounted in place of the old ones. It is the `render()` method that typically queries the Redux state and makes use of those parts of it needed to render its children. A standard pattern is as follows:
@@ -244,6 +237,13 @@ componentWillUnmount() {
 }
 ```
 Now the `updateHandler()` method will only be invoked if an update has a defined `page` or `error` property and can therefore be written accordingly.
+
+## Compiling from source
+
+Automation is thanks to [npm scripts](https://docs.npmjs.com/misc/scripts), have a look at the `package.json` file. The pertinent commands are:
+
+    npm run build-debug
+    npm run watch-debug
 
 ## Contact
 
