@@ -58,11 +58,14 @@ You will need to do this if you want to look at the examples.
 
 ## Usage
 
+Both the `combineRules(...)` and `createDispatcher(...)` factory functions can be imported directly.
+
 ```
 import { combineRules, createDispatcher } from "inference";
 
 ...
 ```
+See the examples for more information.
 
 ## Examples
 
