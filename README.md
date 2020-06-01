@@ -238,7 +238,7 @@ componentWillUnmount() {
 ```
 Now the `updateHandler()` method will only be invoked if an update has a defined `page` or `error` property and can therefore be written accordingly.
 
-## Compiling from source
+## Building
 
 Automation is thanks to [npm scripts](https://docs.npmjs.com/misc/scripts), have a look at the `package.json` file. The pertinent commands are:
 
