@@ -1,6 +1,6 @@
 "use strict";
 
-import { createDispatcher } from "../../index";
+import { createDispatcher } from "../../index"; ///
 
 import rule from "./rule";
 
