@@ -16,7 +16,8 @@ There is a series of complementary videos:
 
 #### Corrigenda
 
-- The `examples.html` file has moved to `examples/index.html`. 
+- The `examples.html` file has moved to `index.html`.
+- The `examples` directory in the `es6` directory has been renamed to `example`.
 - The check in Reaction's `forceUpdate()` method for the presence of an update has been made explicit.
 - The `spliceChildren()` method of Reaction's `DisplayElement` class has been corrected.
 - The best way to handle updates in `render()` methods is with the pattern below. Note that there is no default value of an empty object for the `update` argument. This assures that the initial JSX is rendered only once, assuming that the `render()` method is only called once with no update at all.
@@ -37,7 +38,6 @@ render(update) {
 - Both of the examples now have a child `TodoListItems` components of their respective `TodoList` components. These latter components are now pure functions, in fact.
 - The `TodoListItems` class in the Inference application example now has an `updateHandler()` mixin which follows along the lines recommended patterns and filtering updates sections at the foot of this readme file.
 - More ES6 and some experimental syntax has been adopted, for example ES6 imports and exports.
-- The `examples/index.html` file is now `examples.html`.
 - The SASS has been removed, only the generated CSS remains.
 
 ## Installation
@@ -244,6 +244,12 @@ Automation is thanks to [npm scripts](https://docs.npmjs.com/misc/scripts), have
 
     npm run build-debug
     npm run watch-debug
+
+You can also start a small development server:
+
+    npm start
+
+The example will then be available at http://localhost:8888/ and will reload automatically when changes are made.
 
 ## Contact
 
