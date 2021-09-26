@@ -8,38 +8,6 @@ To go hand in hand with [Reaction](https://github.com/djalbat/Reaction). It does
 
 If you like Reaction and Inference you might like [Reaction with Style](https://github.com/djalbat/reaction-with-style).
 
-## Rewiring Redux
-
-There is a series of complementary videos:
-
-**[Rewiring Redux](https://vimeo.com/album/4445954)**
-
-#### Corrigenda
-
-- The `examples.html` file has moved to `index.html`.
-- The `examples` directory in the `es6` directory has been renamed to `example`.
-- The check in Reaction's `forceUpdate()` method for the presence of an update has been made explicit.
-- The `spliceChildren()` method of Reaction's `DisplayElement` class has been corrected.
-- The best way to handle updates in `render()` methods is with the pattern below. Note that there is no default value of an empty object for the `update` argument. This assures that the initial JSX is rendered only once, assuming that the `render()` method is only called once with no update at all.
-
-```
-render(update) {
-  if (update) {
-    // handle the update
-  } else {
-    return (
-      // Initial JSX
-    );
-  }
-}
-```
-
-- As of version 1.7, Reaction now has a simplified `forceUpdate()` method. The thrust of the point above still holds, however, it is worth reading about the changes nonetheless. In particular it is essential to realise that the above pattern only works if `render()` methods are passed to the dispatcher's `subscirbe()` methods in preference to `forceUpdate()` methods. Full details can be found at the foot of the Reaction readme file.
-- Both of the examples now have a child `TodoListItems` components of their respective `TodoList` components. These latter components are now pure functions, in fact.
-- The `TodoListItems` class in the Inference application example now has an `updateHandler()` mixin which follows along the lines recommended patterns and filtering updates sections at the foot of this readme file.
-- More ES6 and some experimental syntax has been adopted, for example ES6 imports and exports.
-- The SASS has been removed, only the generated CSS remains.
-
 ## Installation
 
 With [npm](https://www.npmjs.com/):
