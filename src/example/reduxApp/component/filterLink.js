@@ -7,10 +7,14 @@ import { SET_VISIBILITY_FILTER } from "../constants";
 const { Component } = React;
 
 export default class FilterLink extends Component {
+  static mixins = [
+    updateHandler
+  ];
+
   componentDidMount() {
     const { store } = this.context;
 
-    this.unsubscribe = store.subscribe(() => this.forceUpdate());
+    this.unsubscribe = store.subscribe(() => this.updateHandler());
   }
 
   componentWillUnmount() {
@@ -55,4 +59,8 @@ export default class FilterLink extends Component {
       </a>
     );
   }
+}
+
+function updateHandler() {
+  this.forceUpdate();
 }

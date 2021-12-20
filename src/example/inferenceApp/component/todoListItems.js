@@ -8,9 +8,15 @@ import TodoListItem from "./todoListItem";
 const { Component } = React;
 
 export default class TodoListItems extends Component {
-  static mixins = [
-    updateHandler
-  ];
+  updateHandler(update) {
+    if (update) {
+      const { addTodo } = update;
+
+      if (addTodo) {
+        this.forceUpdate(update);
+      }
+    }
+  }
 
   componentDidMount() {
     this.unsubscribe = dispatcher.subscribe((update) => this.updateHandler(update));
@@ -38,15 +44,5 @@ export default class TodoListItems extends Component {
     }
 
     return [];
-  }
-}
-
-function updateHandler(update) {
-  if (update) {
-    const { addTodo } = update;
-
-    if (addTodo) {
-      this.forceUpdate(update);
-    }
   }
 }
