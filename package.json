@@ -1,7 +1,7 @@
 {
   "name": "inference",
   "author": "James Smith",
-  "version": "2.0.57",
+  "version": "2.0.58",
   "license": "MIT, Anti-996",
   "homepage": "https://github.com/djalbat/inference",
   "description": "A dispatcher in a similar vein to Redux.",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "necessary": "^11.0.40",
-    "reaction": "^4.0.15"
+    "reaction": "^4.0.17"
   },
   "devDependencies": {
     "@swc/core": "^1.2.50",
