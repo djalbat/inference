@@ -6,7 +6,7 @@ A dispatcher in a similar vein to [Redux](https://github.com/reactjs/redux).
 
 To go hand in hand with [Reaction](https://github.com/djalbat/Reaction). It does away with Redux's centralised state, instead passing updates directly to listeners. It generates updates by applying rules to actions and combining the results in much the same way that Redux employs reducers.
 
-If you like Reaction and Inference you might like [Reaction with Style](https://github.com/djalbat/reaction-with-style).
+If you like Reaction and Inference then you might like [Reaction with Style](https://github.com/djalbat/reaction-with-style). Also you should now consider [Reaction Hooks](https://github.com/djalbat/reaction-hooks) in preference to Inference. 
 
 ## Installation
 
