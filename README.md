@@ -37,7 +37,17 @@ See the examples for more information.
 
 ## Examples
 
-Launch the `examples.html` file. There is one Inference example application as well as a Redux application, for comparison.
+There is a small development server that can be run from within the project's directory with the following command:
+
+    npm start
+
+The examples will then be available at the following URL:
+
+http://localhost:8888
+
+The source for the examples can be found in the `src/examples.js` file and corresponding`src/examples` folder. You are encouraged to try the example whilst reading what follows. You can rebuild it on the fly with the following command:
+
+    npm run watch-debug
 
 ## Recommended patterns
 
@@ -212,12 +222,6 @@ Automation is thanks to [npm scripts](https://docs.npmjs.com/misc/scripts), have
 
     npm run build-debug
     npm run watch-debug
-
-You can also start a small development server:
-
-    npm start
-
-The example will then be available at http://localhost:8888 and will reload automatically when changes are made.
 
 ## Contact
 
