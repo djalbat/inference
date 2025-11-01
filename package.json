@@ -1,7 +1,7 @@
 {
   "name": "inference",
   "author": "James Smith",
-  "version": "2.0.115",
+  "version": "2.0.116",
   "license": "MIT, Anti-996",
   "homepage": "https://github.com/djalbat/inference",
   "description": "A dispatcher in a similar vein to Redux.",
@@ -17,7 +17,7 @@
     "necessary": "^15.0.6",
     "reaction": "^4.0.62",
     "lively-cli": "^2.0.77",
-    "watchful-cli": "^1.7.61"
+    "watchful-cli": "^1.7.63"
   },
   "scripts": {
     "start": "node ./bin/main.js",
